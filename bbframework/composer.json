@@ -1,0 +1,9 @@
+{
+    "require": {
+        "illuminate/database": "~4.2",
+        "phpunit/phpunit": "~4.4",
+        "elasticsearch/elasticsearch": "~2.0@beta",
+        "lixuancn/lanewechat": "^1.5",
+        "gregwar/captcha": "^1.1"
+   }
+}

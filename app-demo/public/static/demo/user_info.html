@@ -1,0 +1,79 @@
+<link href="./themes/flat/theme.min.css" rel="stylesheet">
+<link href="./css/simplebootadmin.css" rel="stylesheet">
+<link href="./font-awesome/4.4.0/css/font-awesome.min.css"  rel="stylesheet" type="text/css">
+<!--[if IE 7]>
+<link rel="stylesheet" href="./font-awesome/4.4.0/css/font-awesome-ie7.min.css">
+<![endif]-->
+<link rel="stylesheet" href="./themes/flat/simplebootadminindex.min.css?">
+
+<link rel="stylesheet" href="./css/simplebootadminindex-ie.css?" />
+
+<script type="text/javascript">
+	//全局变量
+	var GV = {
+		DIMAUB: "/",
+		JS_ROOT: "{$STATIC_ROOT}/js/",
+		TOKEN: ""
+	};
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/wind.js"></script>
+
+<script src="./bootstrap/js/bootstrap.min.js"></script>
+<style>
+	#think_page_trace_open{
+		z-index:9999;
+	}
+</style></head>
+<body>
+<div class="wrap">
+	<ul class="nav nav-tabs">
+		<li><a href="{:admin_url('/admin/index/user')}">管理员</a></li>
+		<li><a href="{:admin_url('/admin/index/user_add')}">管理员添加</a></li>
+	</ul>
+	<form method="post" class="form-horizontal" action="{:admin_url('/admin/index/user_info')}">
+		<input type="hidden" name="id" value="{$user.id}">
+		<fieldset>
+			<div class="control-group">
+				<label class="control-label">用户名</label>
+				<div class="controls">
+					<input type="text" name="name" value="{$user.name}">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">密码</label>
+				<div class="controls">
+					<input type="password" name="password">(不填写即是不更新密码)
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label">角色</label>
+				<div class="controls">
+					<select name="role">
+						{foreach name="role" item="vo"}
+						{php}
+						if ($vo['id'] == $user['role_id']){
+						echo '<option value='. $vo["id"] .' selected="selected">' . $vo['name'] . '</option>';
+						}else{
+						echo '<option value='. $vo["id"] .'>' . $vo['name'] . '</option>';
+						}
+						{/php}
+						{/foreach}
+					</select>
+				</div>
+			</div>
+		</fieldset>
+		<div class="form-actions">
+			<button type="submit" class="btn btn-primary ">保存</button>
+			<!--<a class="btn" href="/index.php?g=Admin&m=user&a=index">返回</a>-->
+		</div>
+	</form>
+</div>
+<script src="./js/common.js"></script>
+</body>
+</html>
+
+
+

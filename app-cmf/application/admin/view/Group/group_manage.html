@@ -1,0 +1,97 @@
+<!-- Bootstrap 3.3.5 -->
+<link rel="stylesheet" href="{$__STATIC__}/css/bootstrap/bootstrap.min.css">
+<!-- Font Awesome -->
+<link href="https://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- sweetalert -->
+<link rel="stylesheet" href="{$__STATIC__}/css/sweetalert/sweetalert.css">	
+<!-- 公共样式 -->
+<link rel="stylesheet" href="{$__STATIC__}/css/common.css">
+<!-- 基础样式 -->
+<link rel="stylesheet" type="text/css" href="{$__STATIC__}/css/style.css"/>		
+<script type="text/javascript">
+	var groupTree		= "{:admin_url('groupTree')}"
+	var importGroup 	= "{:admin_url('importGroup')}"
+	var exportGroup 	= "{:admin_url('exportGroup')}"
+	var groupViewAdd	= "{:admin_url('groupViewAdd')}"
+	var	groupViewEdit	= "{:admin_url('groupViewEdit')}"
+	var viewAdd			= "{:admin_url('viewAdd')}"
+	var logicAdd		= "{:admin_url('logicAdd')}"
+	var viewEdit		= "{:admin_url('viewEdit')}"
+	var logicEdit		= "{:admin_url('logicEdit')}"
+	var logicDelete 	= "{:admin_url('logicDelete')}"
+</script>
+<ul class="g-table-h">
+	<li class="pull-right">
+		<button class="btn-flat btn-success form-control new_group" data-toggle="modal" data-target="#add_group"><i class="fa fa-plus"></i> 添加组管理</button>
+	</li>
+<!-- 	<li class="pull-right">
+		<button class="btn-flat btn-danger form-control del-group" id="btn-delMutil"><i class="fa fa-trash-o"></i> 批量删除</button>
+	</li> -->							
+	<li class="pull-right download_button">
+		<button class="btn-flat btn-primary form-control download"><i class="fa fa-download"></i> 导出菜单</button>
+	</li>
+	<li class="pull-right">
+		<button class="btn-flat btn-danger form-control upload" id="btn-upload" data-toggle="modal" data-target="#add_group"><i class="fa fa-upload"></i> 导入菜单</button>
+	</li>
+
+</ul>
+<div class="box set-box">
+	<div class="box-body table-responsive mailbox-">
+	<div class="search_filter pull-right">
+		<label>
+			<!-- <input type="search" class="form-control input-sm" placeholder="搜索..."> -->
+		</label>
+	</div>	
+    <table id="GroupList" style="width: 100%" class="table table-bordered table-striped display mul-table">
+		<thead>
+        <tr>
+        	<th style="width: 100px;">层级</th>						        	
+            <th class="hide"></th>
+            <th>ID</th>
+            <th>组别</th>
+            <th style="width: 350px;">操作</th>            
+        </tr>
+		</thead>						   	
+        <tbody>						        			        	
+        </tbody>
+		<tfoot>
+        <tr>
+        	<th style="width: 100px;">层级</th>						        	
+            <th class="hide"></th>
+            <th>ID</th>
+            <th>组别</th>
+            <th style="width: 350px;">操作</th>
+        </tr>
+		</tfoot>	
+    </table>
+   <!--  <div class="row">
+    	<div class="col-sm-5">
+    		<div class="dataTables_info data_len">显示 1 至 2 条,共 2 条</div>
+    	</div>
+    	<div class="col-sm-7">
+		    <div class="dataTables_paginate paging_simple_numbers pull-right">
+		    	<ul class="pagination">
+		    		<li class="paginate_button previous disabled"><a href="#">上一页</a></li>
+		    		<li class="paginate_button active"><a href="#">1</a></li>
+		    		<li class="paginate_button"><a href="#">2</a></li>
+		    		<li class="paginate_button next disabled"><a href="#">下一页</a></li>
+		    	</ul>
+		    </div>							    		
+    	</div>
+    </div>			 -->				
+	</div>
+</div>
+<!-- ./wrapper -->
+<div class="modal fade" id="add_group" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<script src="{$__STATIC__}/js/js/jquery-1.12.3.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="{$__STATIC__}/js/js/bootstrap/bootstrap.js"></script>
+<!-- sweetalert -->
+<script src="{$__STATIC__}/js/js/sweetalert/sweetalert.min.js"></script>
+<script src="{$__STATIC__}/js/jquery.treetable.js" type="text/javascript"></script>
+<script src="{$__STATIC__}/js/common.js" type="text/javascript"> </script>
+<script type="text/javascript">
+    $(function(){
+    	drawGroup()
+    });
+</script>     

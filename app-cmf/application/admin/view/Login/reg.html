@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>CMF系统注册界面</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="initial-scale=1.0,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!-- 登录界面基础样式表 -->
+  <link rel="stylesheet" href="{$__STATIC__}/css/login.css" type="text/css">
+</head>
+
+<body>
+
+  <div class="cont">
+    <div class="demo">
+      <form class="login" action="{:admin_url('register')}" method="post">
+        <div class="login__check"></div>
+        <!-- <img class="login-img" src="img/user2-160x160.jpg" alt="用户头像">       -->
+        <div class="login__form">
+          <div class="login__row">
+            <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
+              <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8"></path>
+            </svg>
+            <input type="text" class="login__input" id="username" name="username" placeholder="用户名" autocomplete='off'>
+          </div>
+          <div class="login__row">
+            <svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
+              <path d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0"></path>
+            </svg>
+            <input type="password" class="login__input" id="password" name="password" placeholder="密码" autocomplete='off'>
+          </div>
+          <div class="login__row">
+            <svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
+              <path d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0"></path>
+            </svg>
+            <input type="password" class="login__input" id="confirm_password" name="confirm_password" placeholder="确认密码" autocomplete='off'>
+          </div>     
+          <button type="submit" class="login__submit">注册</button>
+          <p class="login__signup">已有账户? &nbsp;<a href="{:admin_url('index')}">登录</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript" src="{$__STATIC__}/js/js/jquery-1.12.3.js"></script>
+  <script src="{$__STATIC__}/js/js/jquery-validate/jquery.validate.min.js"></script>
+  <script src="{$__STATIC__}/js/js/jquery-validate/messages_zh.js"></script>
+  <script>
+    $(function () {
+        // 登录界面表单验证
+        $(".login").validate({
+            rules: {
+              username: "required",
+              password: "required",
+              confirm_password: {
+                required: true,
+                equalTo: "#password"
+              }
+            },
+            messages: {
+              username: "用户名不能为空",
+              password: "密码不能为空",
+              confirm_password: {
+                required: "确认密码不能为空",
+                equalTo: "两次密码输入不一致"
+              }
+            }
+        }); 
+    })
+  </script>
+</body>
+</html>

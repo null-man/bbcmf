@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh_CN" style="overflow: hidden;">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<!-- Set render engine for 360 browser -->
+	<meta name="renderer" content="webkit">
+	<meta charset="utf-8">
+	<title>{$title}</title>
+
+	<meta name="description" content="This is page-header (.page-header &gt; h1)">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!--<link href="./themes/flat/theme.min.css" rel="stylesheet">-->
+	<!--<link href="./css/simplebootadmin.css" rel="stylesheet">-->
+	<link href="./font-awesome/4.4.0/css/font-awesome.min.css"  rel="stylesheet" type="text/css">
+	<!--<link rel="stylesheet" href="./themes/flat/simplebootadminindex.min.css?">-->
+	
+	<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="./themes/lte/AdminLTE.min.css" />
+	<link rel="stylesheet" href="./themes/lte/skin-blue.min.css" />
+	<script src="./js/jquery.js"></script>	
+	<style type="text/css">
+		.appiframe{
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini" style="min-width:900px;" screen_capture_injected="true">
+	<div class="wrapper">
+		<!-- Main Header -->
+		<header class="main-header">
+
+			<!-- Logo -->
+			<a href="{:admin_url('/admin')}" class="logo">
+				<!-- mini logo for sidebar mini 50x50 pixels -->
+				<span class="logo-mini"><b>B</b></span>
+				<!-- logo for regular state and mobile devices -->
+				<span class="logo-lg">Babybus</span>
+			</a>
+
+			<!-- Header Navbar -->
+			<nav class="navbar navbar-static-top" role="navigation">
+				<!-- Sidebar toggle button-->
+				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+					<span class="sr-only">Toggle navigation</span>
+				</a>
+				<!-- Navbar Right Menu -->
+				<div class="navbar-custom-menu">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="javascript:openapp('{:admin_url('/admin/index/userinfo')}','index_userinfo','修改信息');">
+							<i class="fa fa-user"></i> 修改信息</a></li>
+						<li>
+						<li>
+							<a href="{:admin_url('/admin/login/logout')}" class="btn btn-info btn-flat">退出登录</a>
+						</li>
+						<!-- Control Sidebar Toggle Button -->
+						<li>
+							<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+						</li>
+					</ul>
+				
+				</div>
+			</nav>
+		</header>
+	</div>
+	
+	<!-- Left side column. contains the logo and sidebar -->
+	<aside class="main-sidebar">
+
+		<!-- sidebar: style can be found in sidebar.less -->
+		<section class="sidebar">
+
+			<!-- Sidebar user panel (optional) -->
+			<div class="user-panel">
+				<div class="pull-left image">
+					<img src="./img/user.jpg" class="img-circle" alt="User Image">
+				</div>
+				<div class="pull-left info">
+					<p>{$admin.nick_name}</p>
+					<!-- Status -->
+					<a href="#"><i class="fa fa-clock-o text-success"></i> 上次登录<span id="moment"></span></a>
+				</div>
+			</div>
+
+
+
+			<!-- Sidebar Menu -->
+			<ul class="sidebar-menu">
+				<li class="header">HEADER</li>
+				<!-- Optionally, you can add icons to the links -->
+				{foreach name="show_rule" item="vo"}
+				<li class="treeview">
+					<a href="#"><i class="fa fa-{$vo.icon}"></i> <span>{$vo.name}	</span> <i class="fa fa-angle-left pull-right"></i></a>
+					<ul class="treeview-menu">
+						{foreach name="vo.child" item="v"}
+						<li><a href="javascript:openapp('{:admin_url($v.rule_name)}','{$v.id}','{$v.name}',true);"><i class="fa fa-{$vo.icon}"></i>{$v.name}</a></li>
+						{/foreach}
+					</ul>
+				</li>
+				{/foreach}
+			</ul>
+			<!-- /.sidebar-menu -->
+		</section>
+		<!-- /.sidebar -->
+	</aside>
+	
+    <div class="content-wrapper">
+
+        <!-- Main content -->
+        <section class="content" id="content">
+			<div class="nav-tabs-custom">
+                <ul class="nav nav-tabs" id="index-menu">
+                  <li class="active"><a href="#tab_home" data-toggle="tab" aria-expanded="true">首页</a></li>
+                  <li id='RefreshMenu' class='pull-right'><a href='javascript:refresh_page();' class='text-muted'><i class='fa fa-refresh'></i></a></li>
+                </ul>
+                <div class="tab-content" id="index-content">
+                  <div class="tab-pane active" id="tab_home">
+					<iframe src="{:admin_url('/admin/index/main')}" frameborder="0" id="appiframe-0" class="appiframe"></iframe>
+                  </div><!-- /.tab-pane -->
+
+                </div><!-- /.tab-content -->
+              </div>
+
+
+        </section><!-- /.content -->
+      
+    
+    </div><!-- /.content-wrapper -->
+
+	
+	
+	
+
+
+
+<script src="./bootstrap/js/bootstrap.min.js"></script>
+<script src="./themes/lte/app.min.js"></script>
+<script src="./js/moment-with-locales.js"></script>
+<script src="./js/index.js"></script>
+</body>
+</html>

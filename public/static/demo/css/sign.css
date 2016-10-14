@@ -1,0 +1,155 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+
+body {
+	font-family: "Microsoft YaHei";
+	background: #49b4e4;
+	position: relative;
+}
+
+a{
+	color: #333;
+}
+
+a:hover{
+	color: #333;
+	text-decoration:none;
+}
+input{
+	outline: none;
+	border:none;
+}
+input[type=checkbox].auto-log{
+	margin-top: 5px;
+	margin-right: 8px;	
+}
+input[placeholder], [placeholder], *[placeholder]{
+   font-size: 12px;
+}
+
+.u_signtt{
+	  font-size: 18px;
+	  text-align: center;
+	  margin-top: 20px;
+}
+/*用户登录*/
+.login{
+	position: absolute;
+	width: 470px;
+	height: 346px;
+	top: 50%;
+	left: 50%;
+	margin-left: -235px;
+	margin-top: 173px;
+	padding: 15px;
+	border-radius: 5px;
+	background-color: #fff;
+	border: 1px solid #eaeaea;
+	text-align: center;
+}
+@media screen and (max-width:600px){
+	body{
+		background: #fff;
+	}
+    .login{
+    	width: 100%;
+    	position: static;
+    	margin: 0 auto;
+    	border: 0;
+    }	   
+}
+.login div .login-num{
+	position: relative;
+	text-align: left;
+}
+
+.login div form .usernum,
+.login div form .password{
+	margin-top: 25px;
+	padding: 10px;
+	border:1px solid #eee;
+	border-radius: 5px;
+}
+
+.login div form .usernum i,
+.login div form .password i{
+	display: inline-block;
+	margin-left: 5px;
+	width: 15px;
+	height: 15px;
+	background: url('../img/user.png') no-repeat left;
+	background-size: cover;
+	background-position-x: -15px;
+}
+
+.login div form .password i{
+	background: url('../img/password.png') no-repeat left;
+	background-size: cover;
+	background-position-x: -15px;
+}
+
+.passw-change form div span i{
+	background: url('../img/changepasw.png') no-repeat left;
+	background-size: 85%;
+}
+
+.login div form .usernum b,
+.login div form .password b{
+	padding-right: 10px;
+	padding-left: 10px;
+	color: #eee;
+	font-size: 18px;
+	font-weight: normal;
+}
+
+.login div form .usernum input,
+.login div form .password input{
+	border:none;
+	width: 80%;
+	margin-top: 5px;
+	float: right;
+}
+
+.auto-login{
+	margin-top: 20px;
+	margin-bottom: 38px;
+	color: #ccc;
+	font-size: 14px;
+}
+
+.user-login{
+	display: block;
+	margin-top: 0;
+	margin-bottom: 20px;
+	padding: 5px;
+	width: 100%;
+	border-radius: 5px;
+	border: 0; 
+    background-color: #49b4e4;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+}
+.msg_content{
+	position: absolute;
+	right: 30px;
+	bottom: 60px;
+	color: #ff0000;
+}
+
+/*表单验证样式*/
+.Validform_wrong,
+.Validform_right{
+    font-size: 12px;
+    color: #ff0000;
+    position: absolute;
+    left: 39%;
+    max-width: 300px;
+    margin-left: -37%;
+    margin-top: 37px;
+}
+.Validform_right{
+	color: #188430;
+}

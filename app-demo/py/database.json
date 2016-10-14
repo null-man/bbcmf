@@ -1,0 +1,9 @@
+{
+  "host": "127.0.0.1",
+  "user": "root",
+  "password": "sinyee123",
+  "port": 3306,
+  "database": "bbframework",
+  "charset": "utf8",
+  "prefix": "bb_"
+}

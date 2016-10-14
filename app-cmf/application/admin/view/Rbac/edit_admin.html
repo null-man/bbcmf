@@ -1,0 +1,42 @@
+<link rel="stylesheet" type="text/css" href="{$__STATIC__}/css/select2/select2.min.css">
+<div class="modal-dialog">
+	<div class="modal-content">
+		<form class="form" id="AdminEdit" data-id="AdminEdit" role="form">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">用户编辑列表</h4>
+			</div>
+			<div class="modal-body">
+				<p type="text" class="user_id hide"></p>						
+				<div class="form-group ">
+					<label for="user">用户名:</label>
+                    <input type="text" class="form-control" id="user" name="user" placeholder="请输入用户名">
+				</div>										
+				<div class="form-group">
+					<label for="group">用户组:</label>
+                    <select id="group" name="group" class="form-control" style="width: 100%;">
+                      {$group}
+                    </select>
+				</div>
+				<div class="form-group">
+					<label for="role">角色:</label>
+                    <select id="role" name="role" class="form-control" style="width: 100%;">
+                    	{foreach name="role" item="vo"}
+                    		<option value="{$vo.id}">{$vo.role}</option>
+                    	{/foreach}
+                    </select>
+				</div>																			
+			</div>
+			<div class="modal-footer g-t-center">
+				<button type="submit" class="btn btn-flat btn-primary admin_edit">提交</button>
+			</div>
+		</form>
+	</div>
+</div>
+<script src="{$__STATIC__}/js/js/select2/select2.min.js"></script>
+<script src="{$__STATIC__}/js/js/jquery-validate/jquery.validate.min.js"></script>
+<script src="{$__STATIC__}/js/js/jquery-validate/messages_zh.js"></script>
+<script>
+	$("#group").select2({});
+	$("#role").select2({});
+</script>

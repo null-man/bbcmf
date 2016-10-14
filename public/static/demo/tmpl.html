@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<script type="text/javascript">
+		path = '/static/tmpl/img/';
+		crontipUrl = "{:admin_url('/admin/basicadmin/crontab_json')}";
+	</script>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="./tmpl/lib/bootstrap/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="./tmpl/lib/css/style.css">
+		<link rel="stylesheet" type="text/css" href="./tmpl/lib/css/sweetalert.css">
+		<title></title>
+	</head>
+
+	<body>
+		<div class="m_alltable">
+			<div class="container">
+				<div id="orm" posturl="{$json_url}"></div>
+			</div>
+		</div>
+		<script type="text/javascript" data-main="./tmpl/src/main" src="./tmpl/src/require.js?v=1"></script>
+
+	</body>
+
+</html>

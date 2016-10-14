@@ -1,0 +1,73 @@
+<!-- Bootstrap 3.3.5 -->
+<link rel="stylesheet" href="{$__STATIC__}/css/bootstrap/bootstrap.min.css">
+<!-- Font Awesome -->
+<link href="https://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- Ionicons -->
+<link href="{$__STATIC__}/css/ionicons.min.css" rel="stylesheet">
+<!-- sweetalert -->
+<link rel="stylesheet" href="{$__STATIC__}/css/sweetalert/sweetalert.css">	
+<!-- DataTables -->
+<link rel="stylesheet" type="text/css" href="{$__STATIC__}/css/jquery.dataTables.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="{$__STATIC__}/css/framework/AdminLTE.min.css">
+<!-- iCheck -->
+<link rel="stylesheet" href="{$__STATIC__}/css/blue/blue.css">		
+<!-- 基础样式 -->
+<link rel="stylesheet" type="text/css" href="{$__STATIC__}/css/style.css"/>	
+<script type="text/javascript">
+	var roleData 	= "{:admin_url('roleData')}"
+	var viewAdd		= "{:admin_url('viewAdd')}"
+	var editPower	= "{:admin_url('editPower')}"
+	var menuTree	= "{:admin_url('menuTree')}"
+	var logicAdd	= "{:admin_url('logicAdd')}"
+	var viewEdit	= "{:admin_url('viewEdit')}"
+	var logicEdit	= "{:admin_url('logicEdit')}"
+	var logicDelete = "{:admin_url('logicDelete')}"
+</script>
+<ul class="g-table-h">
+	<li class="pull-right">
+		<button class="btn-flat btn-success form-control new_role" data-toggle="modal" data-target="#add_role"><i class="fa fa-plus"></i> 添加角色管理</button>
+	</li>
+<!-- 	<li class="pull-right">
+		<button class="btn-flat btn-danger form-control del-role" id="btn-delMutil"><i class="fa fa-trash-o"></i> 批量删除</button>
+	</li> -->
+</ul>	
+<div class="box-body table-responsive mailbox-">
+	<table id="RoleList" class="table table-bordered table-striped display" width="100%">
+		<thead>
+			<tr>
+				<th style="width: 80px;">ID</th>
+				<th>角色</th>
+				<th style="width: 250px;">操作</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<th style="width: 80px;">ID</th>
+				<th>角色</th>
+				<th style="width: 250px;">操作</th>
+			</tr>
+		</tfoot>
+
+	</table>
+</div>
+<div class="modal fade" id="add_role" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<!-- jQuery 2.1.4 -->
+<script src="{$__STATIC__}/js/js/jquery-1.12.3.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="{$__STATIC__}/js/js/bootstrap/bootstrap.js"></script>
+<!-- sweetalert -->
+<script src="{$__STATIC__}/js/js/sweetalert/sweetalert.min.js"></script>
+<!-- DataTables -->
+<script type="text/javascript" src="{$__STATIC__}/js/js/datatables/jquery.dataTables.js"></script>
+<script src="{$__STATIC__}/js/js/datatables/dataTables.bootstrap.min.js"></script>
+<!-- iCheck -->
+<script src="{$__STATIC__}/js/icheck.min.js"></script>
+<script src="{$__STATIC__}/js/js/jquery-validate/jquery.validate.min.js"></script>
+<script src="{$__STATIC__}/js/js/jquery-validate/messages_zh.js"></script>	
+<script src="{$__STATIC__}/js/common.js"></script>
+<script>
+	$(function(){
+		drawRole();
+	})	
+</script>	

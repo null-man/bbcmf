@@ -1,0 +1,72 @@
+<!-- Bootstrap 3.3.5 -->
+<link rel="stylesheet" href="{$__STATIC__}/css/bootstrap/bootstrap.min.css">
+<!-- Font Awesome -->
+<link href="https://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- Ionicons -->
+<link href="{$__STATIC__}/css/ionicons.min.css" rel="stylesheet">
+<!-- sweetalert -->
+<link rel="stylesheet" href="{$__STATIC__}/css/sweetalert/sweetalert.css">	
+<!-- DataTables -->
+<link rel="stylesheet" type="text/css" href="{$__STATIC__}/css/jquery.dataTables.min.css">
+<!-- Select2 -->
+<link rel="stylesheet" href="{$__STATIC__}/css/select2/select2.min.css"/>
+<!-- Theme style -->
+<link rel="stylesheet" href="{$__STATIC__}/css/framework/AdminLTE.min.css">
+<link rel="stylesheet" href="{$__STATIC__}/css/framework/skins/skin-blue.min.css">
+<!-- 基础样式 -->
+<link rel="stylesheet" type="text/css" href="{$__STATIC__}/css/style.css"/>	
+<script type="text/javascript">
+	var userData 	= "{:admin_url('userData')}"
+	var viewAdd		= "{:admin_url('viewAdd')}"
+	var role		= "{:admin_url('role')}"
+	var logicAdd	= "{:admin_url('logicAdd')}"
+	var viewEdit	= "{:admin_url('viewEdit')}"
+	var logicEdit	= "{:admin_url('logicEdit')}"
+	var logicDelete = "{:admin_url('logicDelete')}"
+</script>
+<ul class="g-table-h">
+	<li class="pull-right">
+		<button class="btn-flat btn-success form-control new_info" data-toggle="modal" data-target="#add_info"><i class="fa fa-plus"></i> 添加用户</button>
+	</li>
+</ul>
+<div class="box-body table-responsive mailbox-">
+	<table id="AdminList" class="table table-bordered table-striped display" width="100%">
+		<thead>
+			<tr>
+				<th style="width: 80px;">ID</th>
+				<th>用户名</th>											
+				<th>角色</th>
+				<th>用户组</th>
+				<th style="width: 200px;">操作</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<th style="width: 80px;">ID</th>
+				<th>用户名</th>		
+				<th>角色</th>
+				<th>用户组</th>
+				<th style="width: 200px;">操作</th>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+<!-- ./wrapper -->
+<div class="modal fade" id="add_info" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<!-- jQuery 2.1.4 -->
+<script src="{$__STATIC__}/js/js/jquery-1.12.3.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="{$__STATIC__}/js/js/bootstrap/bootstrap.js"></script>
+<!-- sweetalert -->
+<script src="{$__STATIC__}/js/js/sweetalert/sweetalert.min.js"></script>
+<!-- DataTables -->
+<script type="text/javascript" src="{$__STATIC__}/js/js/datatables/jquery.dataTables.js"></script>
+<script src="{$__STATIC__}/js/js/datatables/dataTables.bootstrap.min.js"></script>
+<script src="{$__STATIC__}/js/js/jquery-validate/jquery.validate.min.js"></script>
+<script src="{$__STATIC__}/js/js/jquery-validate/messages_zh.js"></script>
+<script src="{$__STATIC__}/js/common.js"></script>
+<script>
+	$(function(){
+		drawUser();
+	})
+</script>	

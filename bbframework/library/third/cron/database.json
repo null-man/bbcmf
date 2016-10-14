@@ -1,0 +1,8 @@
+{
+	"host":"10.1.14.16",
+    "user":"root",
+    "password":"461he.com",
+    "port":3306 ,
+    "database":"bbframework_crontab",
+    "charset":"utf8"
+}

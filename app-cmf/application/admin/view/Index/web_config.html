@@ -1,0 +1,53 @@
+<!-- Bootstrap 3.3.5 -->
+<link rel="stylesheet" href="{$__STATIC__}/css/bootstrap/bootstrap.min.css">
+<!-- Font Awesome -->
+<link href="https://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- Ionicons -->
+<link href="{$__STATIC__}/css/ionicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{$__STATIC__}/css/framework/skins/skin-blue.min.css">
+<!-- 基础样式 -->
+<link rel="stylesheet" type="text/css" href="{$__STATIC__}/css/style.css"/>   
+<form id="set-Web" class="form-horizontal set-info" action="{:admin_url('siteConfig')}" method="post" enctype="multipart/form-data">
+  <div class="box-body">
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label">网站名称：</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="site_name" name="site_name" placeholder="请输入网站名称" value="{$site_config['site_name']}">
+      </div>
+    </div>
+
+  </div><!-- /.box-body -->
+  <div class="box-footer">
+        <button type="submit" class="btn-flat btn-primary form-control submit-btn">提交</button>
+  </div>
+</form>
+<!-- jQuery 2.1.4 -->
+<script src="{$__STATIC__}/js/js/jquery-1.12.3.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="{$__STATIC__}/js/js/bootstrap/bootstrap.js"></script>
+<!-- DataTables -->
+<script type="text/javascript" src="{$__STATIC__}/js/js/datatables/jquery.dataTables.js"></script>
+<script src="{$__STATIC__}/js/js/datatables/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="{$__STATIC__}/js/js/jquery.slimscroll.min.js"></script>
+<!-- AdminLTE App --> 
+<script src="{$__STATIC__}/js/js/framework/app.min.js"></script>
+<script src="{$__STATIC__}/js/js/moment.js"></script>
+<script src="{$__STATIC__}/js/js/common.js"></script>
+<script src="{$__STATIC__}/js/js/jquery-validate/jquery.validate.min.js"></script>
+<script src="{$__STATIC__}/js/js/jquery-validate/messages_zh.js"></script>      
+<script src="{$__STATIC__}/js/main.js"></script>
+<script>
+  $(function (){
+      $("#set-Web").validate({
+          rules: {
+      site_name: "required",
+      mail: "required"              
+          },
+          messages: {
+      site_name: "网站名称不能为空",
+      mail: "站长邮箱不能为空或者格式不正确"
+          }
+      });             
+  })
+</script>

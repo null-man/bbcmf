@@ -1,0 +1,78 @@
+<link rel="stylesheet" href="{$__STATIC__}/css/bootstrap/bootstrap.min.css" />
+<link rel="stylesheet" href="{$__STATIC__}/css/select2/select2.min.css" />
+<!-- Font Awesome -->
+<link href="https://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- 基础样式 -->
+<link rel="stylesheet" href="{$__STATIC__}/css/style.css" />
+<script type="text/javascript">
+	var userinfo = "{:admin_url('userInfo')}"
+</script>
+<form id="set-user" class="form-horizontal set-info set-user" action="upload" method="post" enctype="multipart/form-data" style="text-align:left">
+	<div class="box-body">
+	    <div class="head">    	
+			<img class="preview-img" src="{$user.head}" alt="">
+			<div class="file-upload-wrap">上传头像
+				<input class="upload-input" type="file" name="file" class="form-control" id="file" onchange="previewFile()">                                            
+			</div>
+			<div class="user-item">
+				<h3 class="user-name"><span class="name">{$user.nikname}</span>
+				<span class="role">{$user_group['group']}</span>&nbsp;<span class="role">{$user_role['role']}</span></h3>
+				<p class="user-intro">{$user.mark}</p>
+			</div>		
+	    </div>
+
+		<!-- 基础信息 -->
+	    <div class="form-group">
+			<label for="username" class="col-sm-2 control-label">用户名：</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="username" name="nikname" value="{$user.nikname}" placeholder="请输入用户名">					
+			</div>
+		</div>			
+	    <div class="form-group">
+			<label for="tel" class="col-sm-2 control-label">联系方式：</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="tel" name="tel" value="{$user.phone}" placeholder="请输入联系方式" >					
+			</div>
+		</div>			
+	    <div class="form-group">
+			<label for="email" class="col-sm-2 control-label">电子邮箱：</label>
+			<div class="col-sm-10">
+				<input type="email" class="form-control" id="email" name="email" placeholder="请输入电子邮箱" value="{$user.mail}">					
+			</div>
+		</div>
+	    <div class="form-group">
+			<label for="password" class="col-sm-2 control-label">密码：</label>
+			<div class="col-sm-10">
+				<input type="password" class="form-control" id="password" name="password" placeholder="请输入密码">					
+			</div>
+		</div>
+	    <div class="form-group">
+			<label for="confirm_password" class="col-sm-2 control-label">确认密码：</label>
+			<div class="col-sm-10">
+				<input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="请输入确认密码">					
+			</div>
+		</div>		
+	    <div class="form-group">
+			<label for="tel" class="col-sm-2 control-label">信息备注：</label>
+			<div class="col-sm-10">
+	            <textarea id="remark" class="form-control" name="remark" rows="3" placeholder="备注">{$user.mark}</textarea>				
+			</div>
+		</div>
+	</div>
+	<div class="box-footer submit-cube">
+		<button type="submit" class="btn-flat btn-primary form-control submit_user">提交</button>
+	</div>		
+</form>	
+<!-- jQuery 2.1.4 -->
+<script src="{$__STATIC__}/js/js/jquery-1.12.3.js"></script>
+<script src="{$__STATIC__}/js/js/select2/select2.min.js"></script>
+<script src="{$__STATIC__}/js/js/jquery-validate/jquery.validate.min.js"></script>
+<script src="{$__STATIC__}/js/js/jquery-validate/messages_zh.js"></script>
+<script src="{$__STATIC__}/js/common.js"></script>
+<script>
+	$(function(){
+		$("#role").select2();
+		$("#group").select2();
+		singleUser();
+	})
+</script>

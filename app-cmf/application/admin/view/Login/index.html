@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>CMF系统登录界面</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="initial-scale=1.0,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!-- 登录界面基础样式表 -->
+  <link rel="stylesheet" href="{$__STATIC__}/css/login.css" type="text/css">
+</head>
+
+<body>
+
+  <div class="cont">
+    <div class="demo">
+      <form class="login" action="{:admin_url('doAdminLogin')}" method="post">
+        <div class="login__check"></div>
+        <!-- <img class="login-img" src="img/user2-160x160.jpg" alt="用户头像">       -->
+        <div class="login__form">
+          <div class="login__row">
+            <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
+              <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8"></path>
+            </svg>
+            <input type="text" class="login__input" id="username" name="username" placeholder="用户名" autocomplete='off'>
+          </div>
+          <div class="login__row">
+            <svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
+              <path d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0"></path>
+            </svg>
+            <input type="password" class="login__input" id="password" name="password" placeholder="密码" autocomplete='off'>
+          </div>
+           {if condition="$config['verify_code'] == 1"}
+          <div class="login__row ck_cube">
+         
+            <input type="text" class="login__input" id="code" name="code" placeholder="验证码" autocomplete='off'>
+            <img class="ckimg" title="点击刷新验证码" alt="点击获取验证码" src="{:U('verify')}">
+           
+          </div>     
+           {/if}   
+          <button type="submit" class="login__submit">登录</button>
+          {if condition="$config['free_reg'] == 1"}
+          <p class="login__signup">暂无账户? &nbsp;<a href="{:admin_url('register')}">注册</a></p>
+           {/if}
+        </div>
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript" src="{$__STATIC__}/js/js/jquery-1.12.3.js"></script>
+  <script src="{$__STATIC__}/js/js/jquery-validate/jquery.validate.min.js"></script>
+  <script src="{$__STATIC__}/js/js/jquery-validate/messages_zh.js"></script>
+  <script>
+    $(function () {
+        // 登录界面表单验证
+        $(".login").validate({
+            rules: {
+              username: "required",
+              password: "required"
+            },
+            messages: {
+              username: "用户名不能为空",
+              password: "密码不能为空"
+            }
+        }); 
+    })
+  </script>
+  <script>
+    $(function(){
+        // 刷新验证码
+        var verifyimg = $(".ckimg").attr("src");
+        $(".ckimg").click(function(){
+            if( verifyimg.indexOf('?')>0){
+                $(".ckimg").attr("src", verifyimg+'&random='+Math.random());
+            }else{
+                $(".ckimg").attr("src", verifyimg.replace(/\?.*$/,'')+'?'+Math.random());
+            }
+        });
+    })
+</script>
+</body>
+</html>

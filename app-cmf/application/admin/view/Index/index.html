@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh_CN" style="overflow: hidden;">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<!-- Set render engine for 360 browser -->
+	<meta name="renderer" content="webkit">
+	<meta charset="utf-8">
+	<title>{$config['site_name']|default="宝宝巴士后台"}</title>
+	<meta name="description" content="This is page-header (.page-header &gt; h1)">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{$__STATIC__}/css/bootstrap/bootstrap.min.css" />
+	<!-- Font Awesome -->
+	<link href="https://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">	
+	<link rel="stylesheet" type="text/css" href="{$__STATIC__}/css/jquery.dataTables.min.css">	
+	<link rel="stylesheet" href="{$__STATIC__}/css/framework/AdminLTE.min.css" />
+	<link rel="stylesheet" href="{$__STATIC__}/css/framework/skins/skin-blue.min.css" />
+	<!-- 基础样式 -->
+	<link rel="stylesheet" type="text/css" href="{$__STATIC__}/css/style.css"/>		
+	<!-- jQuery 2.1.4 -->
+	<script src="{$__STATIC__}/js/js/jquery-1.12.3.js"></script>
+	<style type="text/css">
+		.appiframe{
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini" style="min-width:900px;" screen_capture_injected="true">
+	<div class="wrapper">
+		<!-- Main Header -->
+		<header class="main-header">
+
+			<!-- Logo -->
+			<a href="#" class="logo">
+				<!-- mini logo for sidebar mini 50x50 pixels -->
+				<span class="logo-mini"><b>{$config['site_name']|default="宝宝巴士后台"}</b></span>
+				<!-- logo for regular state and mobile devices -->
+				<span class="logo-lg">{$config['site_name']|default="宝宝巴士后台"}</span>
+			</a>
+
+			<!-- Header Navbar -->
+			<nav class="navbar navbar-static-top" role="navigation">
+				<!-- Sidebar toggle button-->
+				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+					<span class="sr-only">Toggle navigation</span>
+				</a>
+				<!-- Navbar Right Menu -->
+				<div class="navbar-custom-menu">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="{:admin_url('/admin/Login/logout')}" class="btn btn-info btn-flat">退出登录</a>
+						</li>
+
+					</ul>
+				
+				</div>
+			</nav>
+		</header>
+	</div>
+	
+	<!-- Left side column. contains the logo and sidebar -->
+	<aside class="main-sidebar">
+
+		<!-- sidebar: style can be found in sidebar.less -->
+		<section class="sidebar">
+
+			<!-- Sidebar user panel (optional) -->
+			<div class="user-panel">
+				<div class="pull-left image">
+					<img src="{$Think.session.head}" class="img-circle" alt="User Image">
+				</div>
+				<div class="pull-left info">
+					<p>{$Think.session.nikname | default="anonymous"}</p>
+					<!-- Status -->
+					<!-- <a href="#"><i class="fa fa-clock-o text-success"></i> 上次登录<span id="moment"></span></a> -->
+				</div>
+			</div>
+		    <div class="tree"></div>
+			
+		</section>
+		<!-- /.sidebar -->
+	</aside>
+	
+    <div class="content-wrapper">
+		<!-- 提示框 -->
+		<div class="fn-alert"></div>
+        <!-- Main content -->
+        <section class="content" id="content">
+			<div class="nav-tabs-custom">
+                <ul class="nav nav-tabs" id="index-menu">
+					<li class="active"><a href="#tab_home" data-toggle="tab" aria-expanded="true">主页</a></li>
+                </ul>
+                <div class="tab-content" id="index-content">
+                  <div class="tab-pane active" id="tab_home">
+					<iframe src="{:admin_url('indexView')}" frameborder="0" id="appiframe-0" class="appiframe"></iframe>
+                  </div>
+
+                </div>
+              </div>
+
+
+        </section><!-- /.content -->
+      
+    </div><!-- /.content-wrapper -->
+<script src="{$__STATIC__}//js/js/bootstrap/bootstrap.js"></script>
+<!-- DataTables -->
+<script type="text/javascript" src="{$__STATIC__}/js/js/datatables/jquery.dataTables.js"></script>
+<script src="{$__STATIC__}/js/js/datatables/dataTables.bootstrap.min.js"></script>
+<script src="{$__STATIC__}/js/js/framework/app.min.js"></script>
+<script src="{$__STATIC__}/js/js/index.js"></script>
+<script src="{$__STATIC__}/js/common.js"></script>
+<script src="{$__STATIC__}/js/main.js"></script>
+<script>
+  ajaxJson("get","{:admin_url('menu')}",null,'json',tree);
+  function tree(data){
+	var html=new treeMenu(data.data).init(0);
+	// console.log(html);
+	var all_html = '<ul class="sidebar-menu"><li class="header">HEADER</li>'+html+'</ul>'; 
+	// console.log(all_html);
+
+	$(".tree").append(all_html); 
+	var ul_len = $("ul").length;
+	for(var i=0;i<ul_len;i++){
+		if($("ul").eq(i).children("li").length == 0){
+			$("ul").eq(i).addClass("children");
+		}
+	}
+	$("ul.children").remove();
+
+	var li_len = $(".tree li").length;
+	for(var i=0;i<li_len;i++){
+		if($("li").eq(i).children("ul").length != 0){
+			$("li").eq(i).addClass("has_child");
+		}
+	}
+	$("li.has_child").children("a").append('<i class="fa fa-angle-left pull-right"></i>');
+	$(".tree>ul>li").children("a").children(".first_icon").removeClass("fa-circle-o skin-blue").addClass("fa-link");		      
+  } 	
+</script> 
+</body>
+</html>
