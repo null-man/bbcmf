@@ -30,7 +30,7 @@ return [
     'host'      => '127.0.0.1',
     'database'  => 'bbcmf',
     'username'  => 'root',
-    'password'  => 'sinyee123',
+    'password'  => 'root',
     'charset'   => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix'    => '',
