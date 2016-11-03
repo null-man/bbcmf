@@ -1,0 +1,72 @@
+
+<link href="/static/admin/themes/flat/theme.min.css" rel="stylesheet">
+<link href="/static/admin/css/simplebootadmin.css" rel="stylesheet">
+<link href="/static/admin/font-awesome/4.4.0/css/font-awesome.min.css"  rel="stylesheet" type="text/css">
+<!--[if IE 7]>
+<link rel="stylesheet" href="/static/admin/font-awesome/4.4.0/css/font-awesome-ie7.min.css">
+<![endif]-->
+<link rel="stylesheet" href="/static/admin/themes/flat/simplebootadminindex.min.css?">
+
+<link rel="stylesheet" href="/static/admin/css/simplebootadminindex-ie.css?" />
+
+<script type="text/javascript">
+	//全局变量
+	var GV = {
+		DIMAUB: "/",
+		JS_ROOT: "static/admin/js/",
+		TOKEN: ""
+	};
+</script>
+<!-- Le javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/static/admin/js/jquery.js"></script>
+<script src="/static/admin/js/wind.js"></script>
+
+<script src="/static/admin/js/common.js"></script>
+
+<script src="/static/admin/bootstrap/js/bootstrap.min.js"></script>
+<style>
+	#think_page_trace_open{
+		z-index:9999;
+	}
+</style></head>
+<body>
+<div class="wrap js-check-wrap">
+	<ul class="nav nav-tabs">
+		<li><a href="/admin/index/rbac">角色管理</a></li>
+		<li class=""><a href="/admin/index/add_role">添加角色</a></li>
+	</ul>
+	<form class="form-horizontal js-ajax-form" action="role_info" method="post">
+		<input type="hidden" name="id" value="{$id}">
+		<fieldset>
+			<div class="control-group">
+				<label class="control-label">角色名称</label>
+				<div class="controls">
+					<input type="text" name="name" id="rolename" value="{$user.name}"/>
+					<span class="form-required">*</span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">状态</label>
+				<div class="controls">
+					{if condition="$user.state eq 1"}
+						<label class="radio inline" for="active_true"><input type="radio" name="status" value="1" checked id="active_true" />开启</label>
+						<label class="radio inline" for="active_false"><input type="radio" name="status" value="0" id="active_false">禁用</label>
+					{else/}
+						<label class="radio inline" for="active_true"><input type="radio" name="status" value="1"  id="active_true" />开启</label>
+						<label class="radio inline" for="active_false"><input type="radio" name="status" value="0" checked id="active_false">禁用</label>
+					{/if}
+				</div>
+			</div>
+		</fieldset>
+		<div class="form-actions">
+			<button type="submit" class="btn btn-primary js-ajax-submit">保存</button>
+			<!--<a class="btn" href="">返回</a>-->
+		</div>
+	</form>
+</div>
+</body>
+</html>
+
+

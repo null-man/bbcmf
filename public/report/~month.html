@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+	<title>宝宝巴士-父母报告-月报</title>
+	<link rel="stylesheet" type="text/css" href="styles/modules/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="styles/common/bb_common.css">
+</head>
+<body>
+	<!-- loading -->
+	<div class="loading">
+		<div class="spinner">
+		  <div class="rect1"></div>
+		  <div class="rect2"></div>
+		  <div class="rect3"></div>
+		  <div class="rect4"></div>
+		  <div class="rect5"></div>
+		</div>
+	</div>
+	<!-- main -->
+	<div class="swiper-container" id="swiper" style="display: none;">
+		<div class="swiper-wrapper month">
+			<!-- page1 -->
+			<section class="page1 swiper-slide">
+				<ul class="edit_area">
+
+					<li class="ain resize block_l hide" style="width:420px;height:160px;top:40px;left:50px;z-index:1;">
+						<a href="./week.html">
+							<div class="element-box">
+								<img src="./images/month/page1/week.png" class="element-image resize" name="cacheImg" style="width:420px;height:160px;" />
+							</div>
+						</a>
+					</li> 
+					
+					<li class="ain resize center block_l hide" style="width:420px;height:80px ;line-height:80px;top:86px;left:50px ;z-index:1;font-size:80px;">
+						<a href="./week.html"><周报告</a>
+					</li>
+
+					<li class="ain resize block_r hide" style="width:420px;height:160px;top:40px;left:1739px;z-index:1;">
+						<div class="element-box">
+							<img src="./images/month/page1/month.png" class="element-image resize" name="cacheImg" style="width:420px;height:160px;" />
+						</div>
+
+					</li>
+					<li class="ain resize center block_r hide" style="width: 200px;height:80px ;line-height:80px;top:86px ;left:1824px ;z-index: 1;font-size: 80px;">
+						<span>6月</span>
+						<select class="ain resize" style="display:inherit;width: 420px;height: 160px;left:-120px;top:-43px;opacity: 0;z-index: 2;">
+							<option value="1">1月</option>
+							<option value="2">2月</option>
+							<option value="3">3月</option>
+							<option value="4">4月</option>
+							<option value="5">5月</option>
+							<option value="6">6月</option>
+							<option value="7">7月</option>
+							<option value="8">8月</option>
+							<option value="9">9月</option>
+							<option value="10">10月</option>
+							<option value="11">11月</option>
+							<option value="12">12月</option>
+						</select> 
+					</li>
+
+					<li class="ain resize block_c hide" style="width:1700px;height:906px;top:236px;left:252px;z-index:2;">
+						<div class="element-box">
+							<img src="./images/month/page1/block.png" class="element-image resize" name="cacheImg" style="width:1700px;height:906px;" />
+						</div>
+					</li>
+
+					<li class="ain resize wave hide" style="width:222px;height:92px;top:366px;left:746px;z-index:3;">
+						<div class="element-box">
+							<img src="./images/month/page1/wave1.png" class="element-image resize" name="cacheImg" style="width:222px;height:92px;" />
+						</div>
+					</li>
+
+					<li class="ain resize wave hide" style="width:222px;height:92px;top:366px;left:1230px;z-index:3;">
+						<div class="element-box">
+							<img src="./images/month/page1/wave2.png" class="element-image resize" name="cacheImg" style="width:222px;height:92px;" />
+						</div>
+					</li>
+					<!-- 预留-先别删除 -->
+					<!-- <li class="ain resize 2016 hide" style="width:256px;height:120px;top:333px;left:986px;z-index:3;">
+						<div class="element-box">
+							<img src="./images/month/page1/2016.png" class="element-image resize" style="width:256px;height:120px;" />
+						</div>
+					</li> -->
+					<li class="ain resize 2016 hide" style="width:128px;height:91px;top:364px;left:986px;z-index:3;">
+						<div class="element-box">
+							<img src="./images/month/page1/2B.png" class="element-image resize" name="cacheImg" style="width:128px;height:91px;" />
+						</div>
+					</li>
+					<li class="ain resize 2016 hide colorfff" style="width: 98px;height: 117px;line-height:117px;top:354px;left:1118px;z-index: 3;font-size:117px;font-family:fzzy;font-weight: bold;">
+						16
+					</li>
+					<li class="ain resize 2016 hide" style="width:44px;height:26px;top:333px;left:1201px;z-index:3;">
+						<div class="element-box">
+							<img src="./images/month/page1/dot.png" class="element-image resize" name="cacheImg" style="width:44px;height:26px;" />
+						</div>
+					</li>
+
+				</ul>				
+			</section>
+			<!-- page2 -->
+			<section class="page2 swiper-slide">
+				<ul class="edit_area">
+					<li class="ain resize colorfff center title hide" style="width:2208px;height:80px;line-height:80px;top:100px;left:0;z-index:1;font-size:80px;">
+							学习分类分布
+					</li>
+					
+					<!-- 图表 -->
+					<li class="ain resize" style="width:1447px ;height: 772px;top:236px;left:342px;z-index: 2;">
+						<div class="element-box">
+							<div id="pie-chart" class="element-image resize" style="width: 1447px;height: 772px;">
+								
+							</div>
+						</div>
+					</li>
+					
+					<li class="ain resize" style="width:250px;height:316px;top:836px;left:1849px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/month/page2/qq.png" class="element-image resize" name="cacheImg" style="width:250px;height:316px;">
+						</div>
+					</li>
+					<li class="ain resize logo hide" style="width: 296px;height: 295px;top:480px;left:918px;z-index: 2;">
+						<div class="element-box">
+							<img src="./images/month/page2/logo.png" style="width: 296px;height: 296px;" class="element-image resize" name="cacheImg">
+						</div>
+					</li>
+
+					<li class="ain resize bg1974bf more hide" style="width:1000px;height:120px ;top:1020px;left:604px;z-index: 1;">
+						
+					</li>
+					<li class="ain resize center colorfff more hide" style="width:1000px;height:60px;line-height:60px;top:1049px;left:604px;z-index:2;font-size: 60px;">
+							更丰富的课程资源访问 
+							<a class="resize" href="http://cn.babybus.com" style="color:#fcbf38;position: relative;">
+								官网
+								<span class="ain resize" style="width:132px ;height:5px ;top:80px;left:0;background-color: #fcbf38;">
+								</span>
+							</a>
+					</li>
+			</ul>
+			</section>
+			<!-- page3 -->
+			<section class="page3 swiper-slide">
+				<ul class="edit_area">
+					<li class="ain resize colorfff center title hide" style="width:2208px;height:80px;line-height: 80px;top:100px;left:0;z-index:1;font-size:80px;">
+						行为兴趣分析
+					</li>
+					<li class="ain resize colorfff" style="width:520px;height:80px;line-height:80px;top:290px;left:264px;z-index:1;font-size:80px;">
+						宝宝年龄 :
+					</li>
+					<li class="ain resize btn-age" style="width:300px;height:90px;line-height:80px;top:290px;left:764px;z-index:1;">
+						<div class="element-box">
+							<img src="./images/selectbox.png" class="element-image resize" style="width:300px;height:90px;">
+						</div>
+					</li>
+					<li class="ain resize colorfff btn-age" style="width:210px;height:60px;line-height:60px;top:308px;left:786px;z-index:1;font-size:60px;">
+						<span class="select-item">2~3岁</span>
+						<select name="select-age" class="ain resize" style="width:210px;height:60px;left:0;opacity: 0;">
+								<option value="1">1~2岁</option>
+								<option value="1">2~3岁</option>
+								<option value="1">3~4岁</option>
+								<option value="1">4~5岁</option>
+								<option value="1">5~6岁</option>
+						</select>
+					</li>
+					<li class="ain resize desc_ani hide" style="width:16px;height: 290px;top:428px;left:210px ;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/month/page3/left.png" style="width:16px;height: 290px;" class="element-image resize" name="cacheImg">
+						</div>
+					</li> 
+					<li class="ain resize colorfff desc_ani desc hide" style="width:1680px ;height:52px ;line-height:68px;top:438px;left:267px;z-index: 1;font-size:52px ">
+						在这个阶段，宝宝开始有了自己真爱的东西，比如一个毛绒玩具，一条小毛毯，一块小手绢等，睡觉的时候一定要摸着它或者抱着它才行，这是宝宝情感的慰藉物，根据宝宝游戏行为分析他目前对动作方面的东西比较感兴趣。
+					</li>
+					<li class="ain resize desc_ani hide" style="width:16px;height: 290px;top:428px;left:1977px ;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/month/page3/right.png" style="width:16px;height: 290px;" class="element-image resize" name="cacheImg">
+						</div>
+					</li>
+					<li class="ain resize" style="width:2208px;height:356px;left:0;top:748px;z-index: 1;">
+						<div class="recommend">
+							<ul>
+								<li class="ain resize tip" style=";width:576px;height:300px;left:290px;">	
+									<img src="./images/month/page3/tip.png" name="cacheImg">
+								</li>
+								<li class="applist ain resize download" style="width:265px;height:316px;left:1015px;top:36px;">
+									<a href="#" class="appurl1">
+										<div class="appbox resize" style="width: 220px;height: 220px;">
+											<img src="./images/appbg.png" class="resize" style="width: 220px;height:220px;">
+										    <img src="./images/appicon.png" class="appicon1 ain resize" style="width: 200px;height: 200px;left: 33px;top:12px;">
+										</div>
+										<span class="resize appname1" style="font-size: 50px;">奇妙的种子</span>
+									</a>
+								</li>
+								<li class="applist ain resize download" style="width:265px;height:316px;left:1356px;top:36px;">
+									<a href="#" class="appurl2">
+										<div class="appbox resize" style="width: 220px;height: 220px;">
+											<img src="./images/appbg.png" class="resize" style="width: 220px;height:220px;">
+										    <img src="./images/appicon.png" class="appicon2 ain resize" style="width: 200px;height: 200px;left: 33px;top:12px;">
+										</div>
+											<span class="resize appname2" style="font-size: 50px;">奇妙的种子</span>
+									</a>
+								</li>
+								<li class="applist ain resize download" style="width:265px;height:316px;left:1695px;top:36px;">
+									<a href="#" class="appurl3">
+										<div class="appbox resize" style="width: 220px;height: 220px;">
+											<img src="./images/appbg.png" class="resize" style="width: 220px;height:220px;">
+										    <img src="./images/appicon.png" class="appicon3 ain resize" style="width: 200px;height: 200px;left: 33px;top:12px;">
+										</div>
+											<span class="resize appname3" style="font-size: 50px;">奇妙的种子</span>
+									</a>	
+								</li>
+							</ul>
+						</div>
+					</li>
+
+				</ul>
+				
+			</section>
+			<!-- page4 -->
+			<section class="page4 swiper-slide">
+				<ul class="edit_area">
+					<li class="ain resize bg" style="width:2208px;height:953px ;top:108px;left:82px;z-index:0;">
+						<div class="element-box">
+							<img src="./images/page4/bg.png" class="element-image resize" style="width:2208px;height:953px;" name="cacheImg">
+						</div>
+					</li>
+					<li class="ain resize colorfff" style="width:580px;height:80px ;line-height:80px;top:89px;left:661px;z-index: 1;font-size: 80px;">
+						本月流行排行
+					</li>
+					<li class="ain resize btn-age" style="width:300px;height: 90px;top:87px;left:1307px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/selectbox.png" class="element-image resize" style="width:300px;height:90px;">
+						</div>
+					</li>
+					
+			
+					<li class="ain resize colorfff center btn-age" style="width:264px ;height: 60px;line-height:60px;top:110px;left:1308px;z-index: 2;font-size: 60px;">
+							<span class="select-item">2~3岁</span>
+							<select name="select-age" class="ain resize" style="width:264px;height:60px;left:0;opacity: 0;">
+								<option value="1">1~2岁</option>
+								<option value="1">2~3岁</option>
+								<option value="1">3~4岁</option>
+								<option value="1">4~5岁</option>
+								<option value="1">5~6岁</option>
+							</select>
+					</li>
+
+					<li class="ain resize sm" style="width:137px;height:129px; ;top:159px;left:334px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/page4/sm.png" class="element-image resize" style="width:137px;height: 129px;" name="cacheImg"/>
+						</div>	
+					</li>
+
+					<li class="ain resize" style="width:87px;height:121px ;top:332px;left:292px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/page4/qp1.png" style="width:87px;height: 121px;" class="element-image resize" name="cacheImg"/>
+						</div>
+					</li>
+					
+					<li class="ain resize" style="width:64px;height:148px ;top:769px;left:2069px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/page4/qp2.png" style="width:64px;height: 148px;" class="element-image resize" name="cacheImg"/>
+						</div>
+					</li>
+					
+					<li class="ain resize" style="width:263px;height:289px ;top:885px;left:1839px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/page4/qq.png" style="width:263px;height: 289px;" class="element-image resize" name="cacheImg"/>
+						</div>
+					</li>
+
+					<li class="ain resize rank2 hide" style="width:361px;height:336px ;top:765px;left:563px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/page4/rank2.png" style="width:361px;height:336px;" class="element-image resize" name="cacheImg"/>
+						</div>
+					</li>
+					<li class="ain resize rank1 hide" style="width:361px;height:440px;top:661px;left:924px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/page4/rank1.png" style="width:361px;height:440px;" class="element-image resize" name="cacheImg"/>
+						</div>
+					</li>
+					<li class="ain resize rank3 hide" style="width:361px;height:286px ;top:816px;left:1285px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/page4/rank3.png" style="width:361px;height:286px;" class="element-image resize" name="cacheImg"/>
+						</div>
+					</li>
+					<!-- rank2 -->
+					<li class="ain resize appicon hide download" style="width:230px;height:230px ;top:440px;left:647px;z-index: 0;">
+						<!-- app-bg -->	
+						<div class="element-box">
+							<img src="./images/appbg.png" class="element-image ain resize" style="width: 230px;height: 230px;left: 0;top:0;">
+							<img src="./images/appicon.png" style="width:220px;height: 220px;border-radius: 15%;left:5px;top:5px;" class="element-image ain resize rank2_appicon" >
+						</div>
+					</li>
+
+					<li class="ain resize colorfff center appname hide rank2_appname" style="width:361px;height:60px;line-height: 60px;top:692px;left:563px;z-index: 0;font-size:60px;">
+						宝宝爱说话
+					</li>
+					<!-- rank1 -->
+					<li class="ain resize appicon hide download" style="width:230px;height:230px ;top:333px;left:991px;z-index: 0;">
+						<!-- app-bg -->	
+						<div class="element-box">
+							<img src="./images/appbg.png" class="element-image ain resize" style="width: 230px;height: 230px;left: 0;top:0;">
+							<img src="./images/appicon.png" style="width:220px;height: 220px;border-radius: 15%;left:5px;top:5px;" class="element-image ain resize rank1_appicon">
+						</div>
+					</li>
+					<li class="ain resize colorfff center appname hide rank1_appname" style="width:361px;height:60px;line-height:60px;top:583px;left:924px;z-index: 0;font-size:60px;">
+						宝宝爱说话
+					</li>
+
+					<!-- rank3 -->
+					<li class="ain resize appicon hide download" style="width:220px;height:220px ;top:495px;left:1348px;z-index: 0;">
+						<!-- app-bg -->	
+						<div class="element-box">
+							<img src="./images/appbg.png" class="element-image ain resize" style="width: 230px;height: 230px;left: 0;top:0;">
+							<img src="./images/appicon.png" style="width:220px;height: 220px;border-radius: 15%;left:5px;top:5px;" class="element-image ain resize rank3_appicon">
+						</div>
+					</li>
+					<li class="ain resize colorfff center appname hide rank3_appname" style="width:361px;height:60px;line-height:60px;top:740px;left:1286px;z-index: 0;font-size:60px;">
+						宝宝爱说话
+					</li>
+				</ul>	
+			</section>
+			<!-- page5 -->
+			<section class="page5 swiper-slide">
+				<ul class="edit_area">
+					<li class="ain resize colorfff center title hide" style="width:2208px;height:80px;line-height:80px;top:76px;left:0;z-index: 1;font-size: 80px;">
+						上月学习时间分布
+					</li>
+					<li class="ain resize train hide" style="width: 417px;height: 95px;top:184px;left:344px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/month/page5/train.png" class="element-image resize" style="width:417px;height:95px; " name="cacheImg">
+						</div>
+					</li>
+					<li class="ain resize train hide" style="width:49px;height:29px;top:230px;left:310px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/month/page5/smoke.png" class="element-image resize" style="width:49px;height: 29px;min-height: 15px; " name="cacheImg">
+						</div>
+					</li>
+
+					<li class="ain resize train hide" style="width:85px;height:70px;top:109px;left:566px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/month/page5/qp.png" class="element-image resize" style="width:85px;height: 70px; " name="cacheImg">
+						</div>
+					</li>
+
+					<li class="ain resize block hide" style="width:1864px ;height:908px ;top:246px;left:246px;z-index: 0;">
+						<div class="element-box">
+							<img src="./images/month/page5/block.png" class="element-image resize" style="width:1864px ;height:908px ;" name="cacheImg">
+						</div>
+					</li>
+
+					<li class="ain resize center block hide" style="width:2208px;height:55px;line-height:55px;top:339px;left:0;z-index: 1;font-size: 55px;color: #3e3a39;">
+						上月学习时间分布
+					</li>
+					<li class="ain resize block hide" style="width:1289px;height:621px;left:422px ;top:425px;z-index: 2;">
+						<div class="element-box">
+							<div id="line-chart" class="element-image resize" style="width:1289px ;height: 621px;">
+								
+							</div>
+						</div>
+					</li>
+
+				</ul>
+			</section>
+			<!-- page6 -->
+			<section class="page6 swiper-slide">
+				<ul class="edit_area">
+					<li class="ain resize colorfff title hide" style="width: 842px;height:80px ;;line-height: 80px;top:100px;left:660px;z-index: 1;font-size: 80px;">
+						本月宝宝最爱 : TOP<span class="top_num">3</span>
+					</li>
+					<li class="ain resize appitem download" style="width:500px;height:677px;top:346px;left:242px;z-index: 1;">
+						<div class="element-box ain resize bgfff" style="width:500px;height:500px;left:0;top:0;">
+							<img src="./images/appicon.png" style="width:450px;height:450px;left:25px;top:25px;" class="ain resize appicon">
+							<!-- <img src="./images/month/page6/tag1.png" class="ain resize" style="width:230px;height:230px;left:0;top:0;"> -->
+						</div>
+						<div class="element-box center ain resize" style="width:502px;height:120px;top:557px;left:0;">
+							<img src="./images/month/page6/name1.png" class="ain resize element-image" style="width:502px;height:120px;left:0;" name="cacheImg">
+							<span class="ain resize colorfff appname" style="height:60px;line-height:60px;left:69px;top:29px;font-size:60px;">宝宝学日用品</span>
+						</div>
+					</li>
+					<li class="ain resize apptag" style="width:160px;height:160px;left:232px;top:336px;z-index: 2;">
+						<div class="element-box">
+							<img src="./images/month/page6/tag1.png" class="element-image resize" style="width:160px;height:160px;" name="cacheImg">
+						</div>
+					</li>
+					
+					<li class="ain resize appitem download" style="width:500px;height:677px;top:346px;left:855px;z-index: 1;">
+						<div class="element-box ain resize bgfff" style="width:500px;height:500px;left:0;top:0;">
+							<img src="./images/appicon.png" style="width:450px;height:450px;left:25px;top:25px;" class="ain resize appicon" >
+							<!-- <img src="./images/month/page6/tag2.png" class="ain resize" style="width:230px;height:230px;left:0;top:0;"> -->
+						</div>
+						<div class="element-box center ain resize" style="width:502px;height:120px;top:557px;left:0;">
+							<img src="./images/month/page6/name2.png" class="ain resize element-image" style="width:502px;height:120px;left:0;" name="cacheImg">
+							<span class="ain resize colorfff appname" style="height:60px;line-height:60px;left:69px;top:29px;font-size:60px;">宝宝学日用品</span>
+						</div>
+					</li>
+					<li class="ain resize apptag" style="width:160px;height:160px;left:845px;top:336px;z-index: 2;">
+						<div class="element-box">
+							<img src="./images/month/page6/tag2.png" class="element-image resize" style="width:160px;height:160px;" name="cacheImg">
+						</div>
+					</li>
+					
+					<li class="ain resize appitem download" style="width:500px;height:677px;top:346px;left:1462px;z-index: 1;">
+						<div class="element-box ain resize bgfff" style="width:500px;height:500px;left:0;top:0;">
+							<img src="./images/appicon.png" style="width:450px;height:450px;left:25px;top:25px;" class="ain resize appicon">
+							<!-- <img src="./images/month/page6/tag3.png" class="ain resize" style="width:230px;height:230px;left:0;top:0;"> -->
+						</div>
+						<div class="element-box center ain resize" style="width:502px;height:120px;top:557px;left:0;">
+							<img src="./images/month/page6/name3.png" class="ain resize element-image" style="width:502px;height:120px;left:0;" name="cacheImg">
+							<span class="ain resize colorfff appname" style="height:60px;line-height:60px;left:69px;top:29px;font-size:60px;">宝宝学日用品</span>
+						</div>
+					</li>
+					<li class="ain resize apptag" style="width:160px;height:160px;left:1452px;top:336px;z-index: 2;">
+						<div class="element-box">
+							<img src="./images/month/page6/tag3.png" class="element-image resize" style="width:160px;height:160px;" name="cacheImg">
+						</div>
+					</li>
+
+				</ul>
+			</section>			
+			<!-- page7 -->
+			<section class="page7 swiper-slide">
+				<ul class="edit_area">
+					<li class="ain resize" style="width:2208px;height:999px ;top:1073px;left:0;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/page5/bg.png" style="width:2208px;height: 999px;" class="element-image resize" name="cacheImg">
+						</div>
+					</li>
+					<li class="ain resize rocket" style="width:122px;height:225px ;top:965px;left:70px;z-index: 0;">
+					</li>
+
+					<li class="ain resize icon hide" style="width:81px;height:117px ;top:80px;left:925px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/page5/icon.png" style="width:81px;height:117px;" class="element-image resize" name="cacheImg" />
+						</div>
+					</li>
+					
+					<li class="ain resize babybus hide" style="width:260px;height:80px;line-height:70px;top:105px;left:1031px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/page5/babybus.png" style="width:260px;height:80px;" class="element-image resize" name="cacheImg" />
+						</div>
+					</li>
+
+					<li class="ain resize title hide" style="width:1440px ;height:160px ;top:228px;left:395px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/page5/title.png" style="width: 1440px;height: 160px;" class="element-image resize" name="cacheImg">
+						</div>
+					</li>
+
+					<li class="ain resize" style="width:380px;height:380px ;top:463px;left:914px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/page5/qcode.png" style="width:380px;height:380px;" class="element-image resize" name="cacheImg"/>
+						</div>
+					</li>
+					<li class="ain resize qborder" style="width:460px;height:460px ;top:422px;left:875px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/page5/qborder.png" style="width:460px;height:460px;" class="element-image resize" name="cacheImg"/>
+						</div>
+					</li>
+
+					<li class="ain resize colorfff" style="width:223px;height:58px ;line-height:58px;top:958px;left:416px;font-size:58px;z-index: 1;">
+						分享到 :
+					</li>
+
+					<li class="ain resize btn-share" style="width:120px;height:120px ;top:931px;left:699px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/page5/wechat.png" style="width:120px;height:120px;" class="element-image resize" name="cacheImg" data-tag="wechat">
+						</div>
+					</li>
+
+					<li class="ain resize btn-share" style="width:120px;height:120px ;top:931px;left:945px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/page5/quan.png" style="width:120px;height:120px;" class="element-image resize" name="cacheImg" data-tag="quan">	
+						</div>
+					</li>
+					
+					<li class="ain resize btn-share" style="width:120px;height:120px ;top:931px;left:1191px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/page5/qq.png" style="width:120px;height:120px;" class="element-image resize" name="cacheImg" data-tag="qq">	
+						</div>
+					</li>	
+
+					<li class="ain resize btn-share" style="width:120px;height:120px ;top:931px;left:1437px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/page5/weibo.png" style="width:120px;height:120px;" class="element-image resize" name="cacheImg" data-tag="weibo">
+						</div>
+					</li>	
+					
+					<li class="ain resize btn-share" style="width:120px;height:120px ;top:931px;left:1683px;z-index: 1;">
+						<div class="element-box">
+							<img src="./images/page5/tenxun.png" style="width:120px;height:120px;" class="element-image resize" name="cacheImg" data-tag="tenxun">
+						</div>
+					</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+	<!-- next -->
+	<img src="./images/next.png" class="resize" id="next" style="width:65px;height:64px; top:1170px; left:1077px;">
+	<!-- progress -->
+	
+	<div class="progress"><div class="progressbar"><span></span></div></div>
+	
+	<script type="text/javascript" src="scripts/modules/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="scripts/modules/echarts.min.js"></script>
+	<script type="text/javascript" src="scripts/modules/swiper.js"></script>
+	<script type="text/javascript" src="scripts/common/bb_common.js"></script>
+	<script type="text/javascript" src="scripts/common/bb_month.js"></script>
+	<script type="text/javascript">
+		//month.html图片资源预加载
+		var loadImg_month=[];// 创建一个数组，用于存储所有要预加载的图片路径
+		loadImg_month.push('./images/next.png');
+		loadImg_month.push('./images/selectbox.png');
+
+		loadImg_month.push('./images/month/page1/2016.png');
+		loadImg_month.push('./images/month/page1/block.png');
+		loadImg_month.push('./images/month/page1/month.png');
+		loadImg_month.push('./images/month/page1/week.png');
+		loadImg_month.push('./images/month/page1/wave1.png');
+		loadImg_month.push('./images/month/page1/wave2.png');
+
+
+		loadImg_month.push('./images/month/page2/link.png');
+		loadImg_month.push('./images/month/page2/logo.png');
+		loadImg_month.push('./images/month/page2/qq.png');
+		
+		loadImg_month.push('./images/month/page3/left.png');
+		loadImg_month.push('./images/month/page3/right.png');
+		loadImg_month.push('./images/month/page3/tip.png');
+
+		loadImg_month.push('./images/page4/bg.png');
+		loadImg_month.push('./images/page4/qp1.png');
+		loadImg_month.push('./images/page4/qp2.png');
+		loadImg_month.push('./images/page4/qq.png');
+		loadImg_month.push('./images/page4/rank1.png');
+		loadImg_month.push('./images/page4/rank2.png');
+		loadImg_month.push('./images/page4/rank3.png');
+		loadImg_month.push('./images/page4/sm.png');
+
+
+		loadImg_month.push('./images/month/page5/block.png');
+		loadImg_month.push('./images/month/page5/qp.png');
+		loadImg_month.push('./images/month/page5/smoke.png');
+		loadImg_month.push('./images/month/page5/train.png');
+
+		loadImg_month.push('./images/month/page6/name1.png');
+		loadImg_month.push('./images/month/page6/name2.png');
+		loadImg_month.push('./images/month/page6/name3.png');
+		loadImg_month.push('./images/month/page6/tag1.png');
+		loadImg_month.push('./images/month/page6/tag2.png');
+		loadImg_month.push('./images/month/page6/tag3.png');
+
+
+		loadImg_month.push('./images/page5/babybus.png');
+		loadImg_month.push('./images/page5/bg.png');
+		loadImg_month.push('./images/page5/icon.png');
+		loadImg_month.push('./images/page5/qborder.png');
+		loadImg_month.push('./images/page5/qcode.png');
+		loadImg_month.push('./images/page5/qq.png');
+		loadImg_month.push('./images/page5/quan.png');
+		loadImg_month.push('./images/page5/rocket.png');
+		loadImg_month.push('./images/page5/tenxun.png');
+		loadImg_month.push('./images/page5/title.png');
+		loadImg_month.push('./images/page5/wechat.png');
+		loadImg_month.push('./images/page5/weibo.png');
+
+		preload({
+			files : loadImg_month,
+			progress : function(precent, currentImg) {
+				// console.log('当前加载' + currentImg + ', 百分比为' + precent + '%');
+			},
+			complete : function() {
+				console.log('资源加载完成!');
+			}
+		});
+	</script>
+	
+</body>
+</html>

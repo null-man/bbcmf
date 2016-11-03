@@ -1,0 +1,47 @@
+{
+  "info":"周报告",
+  "status":0 ,
+  "tips":"time:【本周平均学习时间】,percent【和XX百分比的全球宝宝一样】,like：【宝宝本周最爱】,guess【猜您宝宝喜欢】,rank【本周流行排汗】",
+  "data":{
+       "time":160,
+       "percent":75,
+       "like":[
+       		{
+       		"img":"./images/appicon.png",
+       		"name":"形状颜色33"
+       		},{
+       		"img":"./images/appicon.png",
+       		"name":"形状颜色22"
+       		},{
+          "img":"./images/appicon1.png",
+          "name":"形状颜色11"
+          }
+       ],
+       "guess":[
+	       {
+          "url":"http://",
+       		"img":"./images/appicon.png",
+       		"name":"猜喜欢33"
+       		},{
+          "url":"http://",
+       		"img":"./images/appicon.png",
+       		"name":"猜喜欢22"
+       		}
+       ],
+       "rank":[
+       		{
+          "url":"http://",
+       		"img":"./images/appicon.png",
+       		"name":"宝宝巴士1"
+       		},{
+          "url":"http://",  
+       		"img":"./images/appicon.png",
+       		"name":"宝宝爱说话2"
+       		},{
+          "url":"http://",  
+       		"img":"./images/appicon.png",
+       		"name":"宝宝爱说话3"
+       		}
+       ]
+   }
+}

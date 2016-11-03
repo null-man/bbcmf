@@ -1,0 +1,66 @@
+<link href="/static/admin/themes/flat/theme.min.css" rel="stylesheet">
+<link href="/static/admin/css/simplebootadmin.css" rel="stylesheet">
+<link href="/static/admin/font-awesome/4.4.0/css/font-awesome.min.css"  rel="stylesheet" type="text/css">
+<!--[if IE 7]>
+<link rel="stylesheet" href="/static/admin/font-awesome/4.4.0/css/font-awesome-ie7.min.css">
+<![endif]-->
+<link rel="stylesheet" href="/static/admin/themes/flat/simplebootadminindex.min.css?">
+
+<link rel="stylesheet" href="/static/admin/css/simplebootadminindex-ie.css?" />
+
+<script type="text/javascript">
+	//全局变量
+	var GV = {
+		DIMAUB: "/",
+		JS_ROOT: "static/admin/js/",
+		TOKEN: ""
+	};
+</script>
+
+<script src="/static/admin/js/jquery.js"></script>
+<script src="/static/admin/js/wind.js"></script>
+
+<script src="/static/admin/bootstrap/js/bootstrap.min.js"></script>
+<style>
+	#think_page_trace_open{
+		z-index:9999;
+	}
+</style></head>
+<body>
+<div class="wrap">
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="/dmp_admin/index/user_rinfo">个人信息</a></li>
+	</ul>
+	<form method="post" class="form-horizontal" action="user_rinfo">
+		<fieldset>
+			<div class="control-group">
+				<label class="control-label">昵称</label>
+				<div class="controls">
+					<input type="text" name="name" value="{$admin.nick_name}">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">电话</label>
+				<div class="controls">
+					<input type="text" name="tel" value="{$admin.tel}">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">邮箱</label>
+				<div class="controls">
+					<input type="text" name="mail" value="{$admin.mail}">
+				</div>
+			</div>
+		</fieldset>
+		<div class="form-actions">
+			<button type="submit" class="btn btn-primary ">保存</button>
+			<!--<a class="btn" href="/index.php?g=Admin&m=user&a=index">返回</a>-->
+		</div>
+	</form>
+</div>
+<script src="/static/admin/js/common.js"></script>
+</body>
+</html>
+
+
+

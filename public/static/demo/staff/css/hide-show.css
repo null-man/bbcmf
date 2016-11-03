@@ -1,0 +1,39 @@
+/*
+hs-1 最高层级
+hs-2 第二层级
+hs-3 第三层级
+*/
+
+/*文字样式*/
+.vice-nav li .hs-1 {
+	font-size: 16px;
+	color: #555;
+}
+.vice-nav li .hs-2 {
+	font-size: 14px;
+	color: #777;
+}
+.vice-nav li .hs-3 {
+	font-size: 14px;
+	color: #999;
+}
+/*hover 样式*/
+.vice-nav li .hs-1:hover {
+	background-color: #bbb;
+}
+.vice-nav li .hs-2:hover {
+	background-color: #ddd;
+}
+.vice-nav li .hs-3:hover {
+	background-color: #E7EAEC;
+}
+/*选中样式*/
+.vice-nav li .hs-1.hs-active {
+	background-color: #bbb;
+}
+.vice-nav li .hs-2.hs-active {
+	background-color: #ddd;
+}
+.vice-nav li .hs-3.hs-active {
+	background-color: #E7EAEC;
+}

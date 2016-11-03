@@ -44,6 +44,13 @@ require __DIR__ . '/../../bbframework/start.php';
 // \think\Route::bind('module','index');
 // \think\Route::bind('module','index/index');
 
+// 安装向导
+if(!file_exists("data/install.lock")){
+    if(!isset($_GET['g']) || strtolower($_GET['g']) != "install"){
+        header("Location:/index.php/install?_app_=cmf&g=install");
+        exit();
+    }
+}
 
 
 \think\App::run();

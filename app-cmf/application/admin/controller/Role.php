@@ -8,7 +8,7 @@ namespace app\admin\controller;
 class Role extends Common {
 
     // 表名
-    protected $table            = 'bbcmf_role';
+    protected $table            = 'role';
     // 添加 页面
     protected $view_add         = 'add_role';
     // 编辑 页面
@@ -28,7 +28,7 @@ class Role extends Common {
     // ----------------------------------
     public function roleData(){
         // 所有角色
-        $all_role = $this->all('bbcmf_role');
+        $all_role = $this->all('role');
         
         // 剔除超级管理员
         $final_data = [];
@@ -61,7 +61,7 @@ class Role extends Common {
         // ###组装树形结构菜单
         // 获取树形结构名称
         $name_arr = [];
-        foreach (explode('|', $this->treeStyleData('bbcmf_rule', "\$id - \$spacer \$name |")) as $_k => $_v) {
+        foreach (explode('|', $this->treeStyleData('rule', "\$id - \$spacer \$name |")) as $_k => $_v) {
             if ($_v) {
                 $k_v_arr = explode(' - ', $_v);
                 $name_arr[$k_v_arr[0]] = $k_v_arr[1];
@@ -69,7 +69,7 @@ class Role extends Common {
         }
 
         // 获取当前用户权限数据
-        $user_auth = $this->all('bbcmf_role_auth', ['role_id' => $id]);
+        $user_auth = $this->all('role_auth', ['role_id' => $id]);
         $user_auth_id = [];
         foreach ($user_auth as $key => $value) {
             array_push($user_auth_id, $value['rule_id']);
@@ -77,7 +77,7 @@ class Role extends Common {
     
         // 重新组装名称
         $show_data = [];
-        foreach ($this->all('bbcmf_rule') as $key => $rule) {
+        foreach ($this->all('rule') as $key => $rule) {
             foreach ($rule as $k => $v) {
                 $tmp[$k] = ($k == 'name') ? $name_arr[$rule['id']] : $v; 
             }
@@ -119,10 +119,10 @@ class Role extends Common {
             // 开启事务
             $transaction_ret = $this->transaction(function() use ($auths, $id) {
                 // 先删除所有角色权限
-                $del_ret = $this->delete('bbcmf_role_auth', ['role_id' => $id]);
+                $del_ret = $this->delete('role_auth', ['role_id' => $id]);
                 // 重新赋予权限
                 foreach ($auths as $key => $auth_id) {
-                    $insert_ret = $this->insert('bbcmf_role_auth', ['role_id' => $id, 'rule_id' => $auth_id]);
+                    $insert_ret = $this->insert('role_auth', ['role_id' => $id, 'rule_id' => $auth_id]);
                 }
             });
             
@@ -130,6 +130,20 @@ class Role extends Common {
         }
     }
 
+
+    // ----------------------------------
+    // 删除角色
+    // ----------------------------------
+    public function getParamsDelete(){
+        $id = I('id', 0);
+        // 级联删除角色权限信息
+        $ret = $this->delete('role_auth', ['role_id' => $id]);
+        
+        if ($ret) {
+            // 返回id
+            return ['id' => $id];
+        }        
+    }
 
 }
 ?>

@@ -1,0 +1,101 @@
+<style>
+    .form-control {
+        max-width: 100%;
+    }
+</style>
+<form action="{:U('sou')}" method="post" class="j-group">
+    <div class="modal-dialog modal-lg big-dialog-center">
+        <div class="col-sm-12">
+            <div class="ibox-title">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h3>创建组别</h3>
+                <div class="ibox-tools"><a class="close-link"><i class="fa fa-times"></i></a></div>
+            </div>
+            <div class="ibox-content sou-region">
+                <div class="row">
+                    <div class="col-sm-2 center">
+                        <div class="set-icon"><img id="group-icon2" src="/static/demo/staff/css/icon/default-logo.png"></div>
+                        <div class="button">
+                            <!-- old upload button -->
+                            <!--
+                            <button class="btn btn-default btn-sm" type="button">
+                                <i class="fa fa-map-marker"></i>选择部门LOGO
+                            </button>
+                            -->
+                            <p class="span-tip upload-img-size">图片尺寸：120X120</p>
+                            <input type="file" id="upload_picture_img2" name="img" style="display: none" multiple="" accept=".gif,.jpg,.jpeg,.png"/>
+                            <input type="hidden" name="img" id="cover_id_img2" value=""/>
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <section class="discuss">
+                            <!-- 组别名称 -->
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name" placeholder="请输入组别名称...(必填)">
+                            </div>
+
+                            <!-- 所属部门 -->
+                            <div class="form-group">
+                                <div class="form-group new-task left">请选择所属部门
+                                    <label class="required-fields">*</label>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="department_id">
+                                        <option value="0" class="honeycomb-status-red">无组别</option>
+                                        {volist name="departments" id="vo"}
+                                            <option value="{$vo.id}">{$vo.name}</option>
+                                        {/volist}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- 组别描述 -->
+                            <div class="form-group">
+                                <textarea class="form-control" name="info" rows="3" placeholder="请输入组别描述...(必填)"></textarea>
+                            </div>
+                        </section>
+
+                        <div class="discuss-footer">
+                            <button type="button" class="btn btn-danger btn-width btn-submit">立即创建</button>
+                            <button type="button" class="btn btn-default m-r-xs btn-width" data-dismiss="modal">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- annex -->
+<script type="text/javascript">
+    // 回调函数[图片上传]
+    function _callback2(file, data) {
+        var data = $.parseJSON(data);
+        var src = '';
+        if (data.status) {
+            $("#cover_id_img2").val(data.id);
+            src = data.url || '__ROOT__' + data.path;
+            $("#group-icon2").attr("src", src);
+        } else {
+            $.Prompt(data.info);
+        }
+    }
+
+    // 绑定事件[图片上传]
+    $("#upload_picture_img2").uploadify({
+        "height"          : 30,
+        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+        "fileObjName"     : "download",
+        "buttonText"      : "上传图片",
+        "uploader"        : "{:U('File/uploadPicture', array('session_id'=>session_id()))}",
+        "width"           : 120,
+        'removeTimeout'   : 1,
+        'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+        "onUploadSuccess" : _callback2,
+        'onFallback' : function() {
+            alert('未检测到兼容版本的Flash.');
+        }
+    });
+</script>

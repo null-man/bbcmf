@@ -1,0 +1,90 @@
+<link href="/static/admin/themes/flat/theme.min.css" rel="stylesheet">
+<link href="/static/admin/css/simplebootadmin.css" rel="stylesheet">
+<link href="/static/admin/font-awesome/4.4.0/css/font-awesome.min.css"  rel="stylesheet" type="text/css">
+<!--[if IE 7]>
+<link rel="stylesheet" href="/static/admin/font-awesome/4.4.0/css/font-awesome-ie7.min.css">
+<![endif]-->
+<link rel="stylesheet" href="/static/admin/themes/flat/simplebootadminindex.min.css?">
+
+<link rel="stylesheet" href="/static/admin/css/simplebootadminindex-ie.css?" />
+
+<script type="text/javascript">
+	//全局变量
+	var GV = {
+		DIMAUB: "/",
+		JS_ROOT: "static/admin/js/",
+		TOKEN: ""
+	};
+</script>
+<!-- Le javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/static/admin/js/jquery.js"></script>
+<script src="/static/admin/js/wind.js"></script>
+
+<script src="/static/admin/js/common.js"></script>
+
+<script src="/static/admin/bootstrap/js/bootstrap.min.js"></script>
+<style>
+	#think_page_trace_open{
+		z-index:9999;
+	}
+</style></head>
+<body>
+<div class="wrap js-check-wrap">
+	<ul class="nav nav-tabs">
+		<li ><a href="/admin/index/menu_front">前台菜单</a></li>
+		<li class="active"><a href="/admin/index/add_menu_front">添加前台菜单</a></li>
+	</ul>
+	<form class="form-horizontal" action="add_menu_front" method="post" enctype="multipart/form-data">
+		<fieldset>
+			<div class="control-group">
+				<label class="control-label">模块名称</label>
+				<div class="controls">
+					<input type="text" name="name" value="" />
+					<span class="form-required">*</span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">模块rul</label>
+				<div class="controls">
+				<input type="text" name="rule_name" value="" />
+				<span class="form-required">*</span>
+					</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">描述</label>
+				<div class="controls">
+				<input type="text" name="description" value="" />
+				<span class="form-required">*</span>
+					</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">封面</label>
+				<div class="controls">
+				<input type="file" name="cover"/>
+				<span class="form-required">*</span>
+					</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">显示:</label>
+				<div class="controls">
+					<select name="show">
+						<option value="1">是</option>
+						<option value="0">否</option>
+					</select>
+				</div>
+			</div>
+		</fieldset>
+		<div class="form-actions">
+			<button type="submit" class="btn btn-primary js-ajax-submit">添加</button>
+		</div>
+	</form>
+</div>
+</body>
+</html>
+
+
+
+
+

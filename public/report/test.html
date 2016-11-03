@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<h1 style="text-align: center;" id="h1">点击测试...</h1>
+	<script type="text/javascript">
+		var isIDevice = /(iPhone|iPod|iPad)/i.test(navigator.userAgent);
+		var isiPad = /(iPad)/i.test(navigator.userAgent);
+		var isAndroid = !isIDevice && (/android/gi).test(navigator.userAgent);
+		
+		 /**
+	     * [BridgeOc js->OC桥接]
+	     * @param {Function} callback [description]
+	     */
+	    function BridgeOc(callback) {
+		if (window.WebViewJavascriptBridge) {
+		    callback(WebViewJavascriptBridge);
+		} else {
+		  document.addEventListener('WebViewJavascriptBridgeReady',function() {
+		    callback(WebViewJavascriptBridge);
+		  },false);
+		}
+		}
+		//调用iOS桥接初始化
+		BridgeOc(function(bridge) {
+		  bridge.init(function(message, responseCallback) {
+		  var data = {
+		   'js请求响应': '初始化'
+		  };
+		  responseCallback(data);
+		  });
+		});
+		//这个方法用于js接收oc的callHandler，handler用一个key标记，可以注册多个handler
+		BridgeOc(function(bridge) {
+		  bridge.registerHandler(function(responseCallback) {
+		 	responseCallback(responseData);
+		 });
+		});
+		//测试OC与android
+		function Octest() {
+			var callbackButton = document.getElementById('h1');
+			callbackButton.onclick=function(e){
+				e.preventDefault();
+				if(isIDevice){
+					//js调用oc方法
+				BridgeOc(function(bridge){
+						bridge.callHandler('getDsn','',function(response){
+							document.body.innerHTML=response;
+							alert("IOS设备号:"+response);
+						});
+				});
+				}else if(isAndroid){
+					//js调用android方法
+					var test=activity.getDsn();
+					alert("android设备号"+test);
+					// activity.getDsn(function(response){
+					// 	document.body.innerHTML=response;
+					// 	alert("android设备号:"+response);
+
+					// });
+				}
+			}
+		}
+		window.onload=function(){
+			Octest();
+		}
+
+
+	</script>
+</body>
+</html>

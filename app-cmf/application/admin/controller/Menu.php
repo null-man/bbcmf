@@ -9,7 +9,7 @@ use think\Config;
 class Menu extends Common {
 
     // 表名
-    protected $table            = 'bbcmf_rule';
+    protected $table            = 'rule';
     // 添加 页面
     protected $view_add         = 'add_menu';
     // 编辑 页面
@@ -40,7 +40,7 @@ class Menu extends Common {
 
         // 重新组装名称
         $show_data = [];
-        foreach ($this->all('bbcmf_rule') as $key => $rule) {
+        foreach ($this->all('rule') as $key => $rule) {
             foreach ($rule as $k => $v) {
                 $tmp[$k] = ($k == 'name') ? $name_arr[$rule['id']] : $v; 
             }
@@ -95,7 +95,7 @@ class Menu extends Common {
             // 图标
             $data['icon']       = '';
 
-            return $this->resultResponseAjax($this->insert('bbcmf_rule', $data), '添加菜单成功', '添加菜单失败');
+            return $this->resultResponseAjax($this->insert('rule', $data), '添加菜单成功', '添加菜单失败');
         }
     }
 
@@ -153,7 +153,7 @@ class Menu extends Common {
             // 上级
             $data['parentid']   = $parent;
 
-            return $this->resultResponseAjax($this->update('bbcmf_rule', $data, ['id' => $id]), '添加更新成功', '添加更新失败');
+            return $this->resultResponseAjax($this->update('rule', $data, ['id' => $id]), '添加更新成功', '添加更新失败');
         }
         
     }
@@ -174,11 +174,11 @@ class Menu extends Common {
         $info  = "SET NAMES utf8;\r\n";
         $info .= "SET FOREIGN_KEY_CHECKS = 0;\r\n";
         $info .= "-- ----------------------------\r\n";
-        $info .= "-- Table structure for `bbcmf_rule`\r\n";
+        $info .= "-- Table structure for `" . \think\Config::get('prefix') . "rule`\r\n";
         $info .= "-- ----------------------------\r\n";
 
-        $info .= "DROP TABLE IF EXISTS `bbcmf_rule`;\r\n";
-        $info .= "CREATE TABLE `bbcmf_rule` (\r\n";
+        $info .= "DROP TABLE IF EXISTS `" . \think\Config::get('prefix') . "rule`;\r\n";
+        $info .= "CREATE TABLE `" . \think\Config::get('prefix') . "rule` (\r\n";
         $info .= "`id` int(11) NOT NULL AUTO_INCREMENT,\r\n";
         $info .= "`name` varchar(128) DEFAULT NULL,\r\n";
         $info .= "`parentid` int(128) DEFAULT NULL,\r\n";
@@ -189,13 +189,13 @@ class Menu extends Common {
         $info .= ") ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;\r\n";
         
         $info .= "-- ----------------------------\r\n";
-        $info .= "--  Records of `bbcmf_rule`\r\n";
+        $info .= "--  Records of `" . \think\Config::get('prefix') . "rule`\r\n";
         $info .= "-- ----------------------------\r\n";
         $info .= "BEGIN;\r\n";
-        $info .= "INSERT INTO `bbcmf_rule` VALUES ";
+        $info .= "INSERT INTO `" . \think\Config::get('prefix') . "rule` VALUES ";
 
         $data = [];
-        foreach ($this->all('bbcmf_rule') as $rule) {
+        foreach ($this->all('rule') as $rule) {
             $tmp = [];
             foreach ($rule as $key => $value) {
                 array_push($tmp, "'" . $value . "'");

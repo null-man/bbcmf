@@ -8,7 +8,7 @@ namespace app\admin\controller;
 class Group extends Common {
 
     // 表名
-    protected $table            = 'bbcmf_group';
+    protected $table            = 'group';
     // 添加 页面
     protected $view_add         = 'add_group';
     // 编辑 页面
@@ -142,11 +142,11 @@ class Group extends Common {
         $info  = "SET NAMES utf8;\r\n";
         $info .= "SET FOREIGN_KEY_CHECKS = 0;\r\n";
         $info .= "-- ----------------------------\r\n";
-        $info .= "-- Table structure for `bbcmf_group`\r\n";
+        $info .= "-- Table structure for `" . \think\Config::get('prefix') . "group`\r\n";
         $info .= "-- ----------------------------\r\n";
 
-        $info .= "DROP TABLE IF EXISTS `bbcmf_group`;\r\n";
-        $info .= "CREATE TABLE `bbcmf_group` (\r\n";
+        $info .= "DROP TABLE IF EXISTS `" . \think\Config::get('prefix') . "group`;\r\n";
+        $info .= "CREATE TABLE `" . \think\Config::get('prefix') . "group` (\r\n";
         $info .= "`id` int(11) NOT NULL AUTO_INCREMENT,\r\n";
         $info .= "`group` varchar(128) DEFAULT NULL,\r\n";
         $info .= "`parentid` int(11) DEFAULT NULL,\r\n";
@@ -155,13 +155,13 @@ class Group extends Common {
         $info .= ") ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;\r\n";
         
         $info .= "-- ----------------------------\r\n";
-        $info .= "--  Records of `bbcmf_group`\r\n";
+        $info .= "--  Records of `" . \think\Config::get('prefix') . "group`\r\n";
         $info .= "-- ----------------------------\r\n";
         $info .= "BEGIN;\r\n";
-        $info .= "INSERT INTO `bbcmf_group` VALUES ";
+        $info .= "INSERT INTO `" . \think\Config::get('prefix') . "group` VALUES ";
 
         $data = [];
-        foreach ($this->all('bbcmf_group') as $rule) {
+        foreach ($this->all('group') as $rule) {
             $tmp = [];
             foreach ($rule as $key => $value) {
                 array_push($tmp, "'" . $value . "'");

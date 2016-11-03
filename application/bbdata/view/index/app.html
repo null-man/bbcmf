@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="css/global.css" />
+    <link rel="stylesheet" href="css/font.css" />
+    <title></title>
+</head>
+
+<body>
+    <div class="g_nav navbar-fixed-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="logo pull-left">
+                        <!-- <img src="https://d1p3dh66omwgxt.cloudfront.net/wp-content/themes/seedoc/img/logo.png" /> -->
+                        <a href="index.html"><img src="./img/Babybus-Data.png" /></a>
+                    </div>
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="user">
+                            <a class="aimg dropdown-toggle" id="userInfo" data-toggle="dropdown"><img class="userIcon" src="img/sign.png" /></a>
+                            <ul class="userInfo dropdown-menu" aria-labelledby="userInfo">
+                                <li><a href="#">个人中心</a></li>
+                                <li><a href="#">退出</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container g_c">
+        <div class="row">
+            <div class="btn-group u_classifybtn">
+                <button id="total" type="button" class="btn btn-primary active">总体分析</button>
+                <button id="single" type="button" class="btn btn-primary">单品分析</button>
+            </div>
+        </div>
+        <!-- 总体分析 -->
+        <!-- <div class="row m_total">
+        	<div class="col-lg-12">
+	            <div class="form-group form-inline">
+	                <div class="f_select">
+	                    <a style="width: 100%;" class="btn btn-default dropdown-toggle" id="userInfo" data-toggle="dropdown">
+	                        <span class="name">原始数据</span>
+	                        <span class="caret pull-right"></span>
+	                    </a>
+	                    <ul class="userInfo dropdown-menu" aria-labelledby="userInfo" id="filterDivision">
+	                        <li><a href="#">原始数据</a></li>
+	                        <li><a href="#">语言分类</a></li>
+	                        <li><a href="#">地区分类</a></li>
+	                    </ul>
+	                </div>
+	                <div class="f_select">
+	                    <a style="width: 100%; " class="btn btn-default dropdown-toggle" id="userInfo" data-toggle="dropdown">
+	                        <span class="name">日数据</span>
+	                        <span class="caret pull-right"></span>
+	                    </a>
+	                    <ul class="userInfo dropdown-menu" aria-labelledby="userInfo" id="filterPeriod">
+	                        <li><a href="#">日数据</a></li>
+	                        <li><a href="#">周数据</a></li>
+	                        <li><a href="#">月数据</a></li>
+	                    </ul>
+	                </div>
+	                <div class="f_select">
+	                    <a style="width: 100%;" class="btn btn-default dropdown-toggle" id="userInfo" data-toggle="dropdown">
+	                        <span class="name">所有APP</span>
+	                        <span class="caret pull-right"></span>
+	                    </a>
+	                    <ul class="userInfo dropdown-menu u_select" aria-labelledby="userInfo" id="filterSub">
+	                        <li><a href="#">所有APP</a></li>
+	                        <li><a href="#">iPhone_宝宝巴士</a></li>
+	                        <li><a href="#">iPhone_动画屋</a></li>
+	                        <li><a href="#">Andoid_宝宝巴士</a></li>
+	                        <li><a href="#">Andoid_动画屋</a></li>
+	                    </ul>
+	                </div>
+	                <input type="text" class="form-control" id="time" placeholder="选择时间">
+	                <a href="#" style="padding-left: 20px; padding-right: 20px;" class="btn btn-success pull-right" id="overallSearch">查询</a>
+	            </div>
+	            <div id="main" class="col-lg-12 m_echartData">
+	            </div>
+	            <div class="m_alltable">
+		            <table class="table table-hover m_userData" id="overallTable">
+		                <thead>
+		                    <tr>
+		                        <th>时间</th>
+		                        <th>新增用户</th>
+		                        <th>增幅</th>
+		                        <th>活跃用户</th>
+		                        <th>增幅</th>
+		                        <th>启动次数</th>
+		                        <th>增幅</th>
+		                        <th>详情</th>
+		                    </tr>
+		                </thead>
+		                <tbody>
+		                    <tr>
+		                        <td>2016-04-24</td>
+		                        <td>10000</td>
+		                        <td>5.00%</td>
+		                        <td>300000</td>
+		                        <td>10.0%</td>
+		                        <td>30000</td>
+		                        <td>12.0%</td>
+		                        <td>
+		                            <button type="button" class="btn btn-primary">详情</button>
+		                        </td>
+		                    </tr>
+		                    <tr>
+		                        <td>2016-04-24</td>
+		                        <td>10000</td>
+		                        <td>5.00%</td>
+		                        <td>300000</td>
+		                        <td>10.0%</td>
+		                        <td>30000</td>
+		                        <td>12.0%</td>
+		                        <td>
+		                            <button type="button" class="btn btn-primary">详情</button>
+		                        </td>
+		                    </tr>
+		                    <tr>
+		                        <td>2016-04-24</td>
+		                        <td>10000</td>
+		                        <td>5.00%</td>
+		                        <td>300000</td>
+		                        <td>10.0%</td>
+		                        <td>30000</td>
+		                        <td>12.0%</td>
+		                        <td>
+		                            <button type="button" class="btn btn-primary">详情</button>
+		                        </td>
+		                    </tr>
+		                    <tr>
+		                        <td>2016-04-24</td>
+		                        <td>10000</td>
+		                        <td>5.00%</td>
+		                        <td>300000</td>
+		                        <td>10.0%</td>
+		                        <td>30000</td>
+		                        <td>12.0%</td>
+		                        <td>
+		                            <button type="button" class="btn btn-primary">详情</button>
+		                        </td>
+		                    </tr>
+		                </tbody>
+		            </table>
+		            <ul class="pagination u_pagination" id="overallPagination">
+		                <li><a href="#">&laquo;</a></li>
+		                <li class="active"><a href="#">1</a></li>
+		                <li><a href="#">2</a></li>
+		                <li><a href="#">3</a></li>
+		                <li><a href="#">4</a></li>
+		                <li><a href="#">5</a></li>
+		                <li><a href="#">&raquo;</a></li>
+		            </ul>
+	            </div>
+            </div>
+        </div> -->
+        <div class="row m_total">
+            <div class="col-lg-12">
+            <div class="form-group form-inline">
+                <div class="f_select">
+                    <a style="width: 100%;" class="btn btn-default dropdown-toggle" id="userInfo" data-toggle="dropdown">
+                        <span class="name">原始数据</span>
+                        <span class="caret pull-right"></span>
+                    </a>
+                    <ul class="userInfo dropdown-menu" aria-labelledby="userInfo" id="filterDivision">
+                        <li><a href="#">原始数据</a></li>
+                        <li><a href="#">语言分类</a></li>
+                        <li><a href="#">地区分类</a></li>
+                    </ul>
+                </div>
+                <div class="f_select">
+                    <a style="width: 100%; " class="btn btn-default dropdown-toggle" id="userInfo" data-toggle="dropdown">
+                        <span class="name">日数据</span>
+                        <span class="caret pull-right"></span>
+                    </a>
+                    <ul class="userInfo dropdown-menu" aria-labelledby="userInfo" id="filterPeriod">
+                        <li><a href="#">日数据</a></li>
+                        <li><a href="#">周数据</a></li>
+                        <li><a href="#">月数据</a></li>
+                    </ul>
+                </div>
+                <div class="f_select">
+                    <a style="width: 100%;" class="btn btn-default dropdown-toggle" id="userInfo" data-toggle="dropdown">
+                        <span class="name">所有APP</span>
+                        <span class="caret pull-right"></span>
+                    </a>
+                    <ul class="userInfo dropdown-menu u_select" aria-labelledby="userInfo" id="filterSub">
+                        <li><a href="#">所有APP</a></li>
+                        <li><a href="#">iPhone_宝宝巴士</a></li>
+                        <li><a href="#">iPhone_动画屋</a></li>
+                        <li><a href="#">Andoid_宝宝巴士</a></li>
+                        <li><a href="#">Andoid_动画屋</a></li>
+                    </ul>
+                </div>
+                <input type="text" class="form-control" id="time" placeholder="选择时间">
+                <a href="#" style="padding-left: 20px; padding-right: 20px;" class="btn btn-success pull-right" id="overallSearch">查询</a>
+                <div class="clearfix"></div>
+            </div>
+            <div id="main" class="m_echartData">
+            </div>
+            <div class="m_alltable">
+                <!-- <div class="m_loadmask"></div>
+                <div class="u_loader">loading</div> -->
+                <table class="table table-hover m_userData" id="overallTable">
+                    <thead>
+                        <tr>
+                            <th>时间</th>
+                            <th>新增用户</th>
+                            <th>增幅</th>
+                            <th>活跃用户</th>
+                            <th>增幅</th>
+                            <th>启动次数</th>
+                            <th>增幅</th>
+                            <th>详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2016-04-24</td>
+                            <td>10000</td>
+                            <td>5.00%</td>
+                            <td>300000</td>
+                            <td>10.0%</td>
+                            <td>30000</td>
+                            <td>12.0%</td>
+                            <td>
+                                <button type="button" class="btn btn-primary">详情</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2016-04-24</td>
+                            <td>10000</td>
+                            <td>5.00%</td>
+                            <td>300000</td>
+                            <td>10.0%</td>
+                            <td>30000</td>
+                            <td>12.0%</td>
+                            <td>
+                                <button type="button" class="btn btn-primary">详情</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2016-04-24</td>
+                            <td>10000</td>
+                            <td>5.00%</td>
+                            <td>300000</td>
+                            <td>10.0%</td>
+                            <td>30000</td>
+                            <td>12.0%</td>
+                            <td>
+                                <button type="button" class="btn btn-primary">详情</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2016-04-24</td>
+                            <td>10000</td>
+                            <td>5.00%</td>
+                            <td>300000</td>
+                            <td>10.0%</td>
+                            <td>30000</td>
+                            <td>12.0%</td>
+                            <td>
+                                <button type="button" class="btn btn-primary">详情</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <ul class="pagination u_pagination" id="overallPagination">
+                    <li><a href="#">&laquo;</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                </ul>                
+            </div>
+            <div class="alltable"></div>
+            </div>
+        </div>
+        <!-- 单品分析 -->
+        <div class="row m_single f_none">
+        	<div class="col-lg-12">
+                <!-- 选项按钮 -->
+                <div class="form-group form-inline">
+                    <div class="f_select">
+                        <a style="width: 100%;" class="btn btn-default dropdown-toggle" id="userInfo" data-toggle="dropdown">
+                            <span class="name">所有APP</span>
+                            <span class="caret pull-right"></span>
+                        </a>
+                        <ul class="userInfo dropdown-menu u_select" aria-labelledby="userInfo" id="filterSingle">
+                            <li><a href="#">所有APP</a></li>
+                            <li><a href="#">iPhone_宝宝巴士</a></li>
+                            <li><a href="#">iPhone_动画屋</a></li>
+                            <li><a href="#">Andoid_宝宝巴士</a></li>
+                            <li><a href="#">Andoid_动画屋</a></li>
+                        </ul>
+                    </div>
+                    <input type="text" class="form-control" id="secondtime" placeholder="选择时间">
+                    <a href="#" style="padding-left: 20px; padding-right: 20px;margin-left: 20px;" class="btn btn-success" id="singleSearch">查询</a>
+                </div>
+                <!-- 显示单品数据 -->
+                <div class="m_showDate">
+                    <div id="singlechartBtn" class="btn-group u_btn">
+                        <button type="button" class="btn btn-primary active">新增用户</button>
+                        <button type="button" class="btn btn-primary">活跃用户</button>
+                        <button type="button" class="btn btn-primary">启动次数</button>
+                        <button type="button" class="btn btn-primary">累计用户</button>
+                        <button type="button" class="btn btn-primary">次日留存率</button>
+                        <button type="button" class="btn btn-primary">平均单次使用时长</button>
+                        <button type="button" class="btn btn-primary">平均日使用时长</button>
+                        <button type="button" class="btn btn-primary">平均日启动次数</button>
+                    </div>
+                    <div id="singlechart" class="m_singleData"></div>
+                    <div class="f_clear"></div>
+                </div>
+                <!-- 显示饼图 -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="u_title">平均版本发布</div>
+                        <div class="m_versions">
+                            <div class="versionsData btn-group u_btn" id="singlepieV">
+                                <button type="button" class="btn btn-primary active">新增用户</button>
+                                <button type="button" class="btn btn-primary ">活跃用户</button>
+                                <button type="button" class="btn btn-primary ">累计用户</button>
+                            </div>
+                            <div id="versionchart" class="m_versionsData"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 ">
+                        <div class="u_title">平均渠道发布</div>
+                        <div class="m_channel">
+                            <div class="channelData btn-group u_btn"
+                            id="singlepieD">
+                                <button type="button" class="btn btn-primary  active">新增用户</button>
+                                <button type="button" class="btn btn-primary ">活跃用户</button>
+                                <button type="button" class="btn btn-primary ">累计用户</button>
+                            </div>
+                            <div id="channelchart" class="m_channelData"></div>
+                        </div>
+                    </div>
+                    <div class="f_clear"></div>
+                </div>
+                <div class="m_alltable">
+	                <table class="table table-hover m_userData" id="singleTable">
+	                    <thead>
+	                        <tr>
+	                            <th>平台</th>
+	                            <th>应用名</th>
+	                            <th>新增用户</th>
+	                            <th>活跃用户</th>
+	                            <th>增幅</th>
+	                            <th>启动次数</th>
+	                            <th>版本</th>
+	                            <th>渠道</th>
+	                            <th>单次时长</th>
+	                            <th>日时长</th>
+	                            <th>日启动</th>
+	                            <th>启动用户</th>
+	                            <th>错误率</th>
+	                            <th>详情</th>
+	                        </tr>
+	                    </thead>
+	                    <tbody>
+	                        <tr>
+	                            <td><img src="img/andriod-icon.png" alt=""></td>
+	                            <td>2016-04-24</td>
+	                            <td>照顾小宝宝</td>
+	                            <td>10000</td>
+	                            <td>10000</td>
+	                            <td>10000</td>
+	                            <td>8.8</td>
+	                            <td>default</td>
+	                            <td>00:10:00</td>
+	                            <td>01:00:00</td>
+	                            <td>10</td>
+	                            <td>3100000</td>
+	                            <td>0.005</td>
+	                            <td>
+	                                <button type="button" class="btn btn-primary">详情</button>
+	                            </td>
+	                        </tr>
+	                    </tbody>
+	                </table>
+	                <ul class="pagination u_pagination" id="singlePagination">
+	                    <li><a href="#">&laquo;</a></li>
+	                    <li class="active"><a href="#">1</a></li>
+	                    <li><a href="#">2</a></li>
+	                    <li><a href="#">3</a></li>
+	                    <li><a href="#">4</a></li>
+	                    <li><a href="#">5</a></li>
+	                    <li><a href="#">&raquo;</a></li>
+	                </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" data-main="js/main" src="js/require.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,252 @@
+<style>
+    .form-control {
+        max-width: 100%;
+    }
+</style>
+<form method="post" class="j-staff">
+    <div class="modal-dialog modal-lg">
+        <div class="col-sm-12">
+            <div class="ibox-title">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h3>创建员工</h3>
+                <div class="ibox-tools"><a class="close-link"><i class="fa fa-times"></i></a></div>
+            </div>
+            <div class="ibox-content sou-region">
+                <div class="row">
+                    <!--图片js上传问题待解决-->
+                    <div class="col-sm-2 center">
+                        <div class="set-icon"><img id="staff-icon2" src="/static/demo/staff/css/icon/default-logo.png"></div>
+                        <div class="button">
+                            <!-- old upload button -->
+                            <!--
+                            <button class="btn btn-default btn-sm" type="button">
+                                <i class="fa fa-map-marker"></i>选择部门LOGO
+                            </button>
+                            -->
+                            <p class="span-tip upload-img-size">图片尺寸：120X120</p>
+                            <input type="file" id="upload_picture_img2" name="img" style="display: none" multiple="" accept=".gif,.jpg,.jpeg,.png"/>
+                            <input type="hidden" name="img" id="cover_id_img2" value=""/>
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <section class="discuss">
+                            <div class="form-group">
+                                <div class="well nav-task-body bg-white">
+                                    <div class="row">
+                                        <!-- 工号 -->
+                                        <div class="col-sm-2">
+                                            <h4 class="font-s12">工号<label class="required-fields">*</label></h4>
+                                            <div class="staff-name">
+                                                <input type="text" name="no" value=""/>
+                                            </div>
+                                        </div>
+
+                                        <!-- 姓名 -->
+                                        <div class="col-sm-2">
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">姓名<label class="required-fields">*</label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <input type="text" name="name" value=""/>
+                                            </div>
+                                        </div>
+
+                                        <!-- 昵称 -->
+                                        <div class="col-sm-2">
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">昵称<label class="required-fields">*</label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <input type="text" name="nick_name" value=""/>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- 密码 -->
+                                        <div class="col-sm-3">
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">密码<label class="required-fields">*</label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <input type="password" name="password" value=""/>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- 确认密码 -->
+                                        <div class="col-sm-3">
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">确认密码<label class="required-fields">*</label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <input type="password" name="repassword" value=""/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="well nav-task-body bg-white">
+                                    <div class="row">
+                                        <!-- 系统角色 -->
+                                        <div class="col-sm-3" {if condition="$Think.session.ROLE_ID elt 2"}style="display: block;"{else/}style="display: none;"{/if}>
+                                            <h4 class="font-s12">系统角色<label class="required-fields">*</label></h4>
+                                            <div class="staff-name">
+                                                <select class="form-control" name="role_id">
+                                                    <option value="" selected>请选择系统角色</option>
+                                                    {volist name="roles" id="vo"}
+                                                        <option value="{$vo.id}">{$vo.name}</option>
+                                                    {/volist}
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- QQ -->
+                                        <div class="col-sm-3">
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">QQ<label class="required-fields"></label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <input type="text" name="qq" value=""/>
+                                            </div>
+                                        </div>
+
+                                        <!-- 电话 -->
+                                        <div class="col-sm-3">
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">电话<label class="required-fields"></label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <input type="text" name="phone" value=""/>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- 邮箱 -->
+                                        <div class="col-sm-3">
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">邮箱<label class="required-fields"></label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <input type="text" name="mail" value=""/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="well nav-task-body bg-white">
+                                    <div class="row ajaxWebDepartments" url="{:U('ajaxWebDepartments')}">
+                                        <!-- 所属部门 -->
+                                        <div class="col-sm-3">
+                                            <h4 class="font-s12">所属部门<label class="required-fields">*</label></h4>
+                                            <div class="staff-name">
+                                                <select class="form-control" name="department_id">department_list
+                                                    <option value="">请选择所属部门</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- 所属组别 -->
+                                        <div class="col-sm-3">
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">所属组别<label class="required-fields">*</label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <select class="form-control" name="group_id">
+                                                    <option value="">请选择从属组别</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- 是否管理者 -->
+                                        <div class="col-sm-3" {if condition="$Think.session.ROLE_ID elt 2"}style="display: block;"{else/}style="display: none;{/if}>
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">是否管理者<label class="required-fields"></label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <select class="form-control" name="leader_kind">
+                                                    <option value="">请选择管理者类型</option>
+                                                    {volist name="leaders" id="vo"}
+                                                        <option value="{$vo.id}" {if condition="$vo.id eq $staff['leader_kind']"}selected{/if}>{$vo.name}</option>
+                                                    {/volist}
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- 员工职位 -->
+                                        <div class="col-sm-3">
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">员工职位<label class="required-fields">*</label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <select class="form-control" name="position_id">
+                                                    <option value="">请选择员工职位</option>
+                                                    {volist name="positions" id="vo"}
+                                                        <option value="{$vo.id}" {if condition="$vo.id eq $staff['position_id']"}selected{/if}>{$vo.name}</option>
+                                                    {/volist}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 员工状态 -->
+                            <div class="form-group">
+                                <div class="well nav-task-body bg-white">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h4 class="font-s12">状态<label class="required-fields">*</label></h4>
+                                            <div class="staff-name">
+                                                <select class="form-control" name="status">
+                                                    <option value="">请选择状态</option>
+                                                    {volist name="statuses" id="vo" }
+                                                        <option value="{$key}" {if condition="$key eq 1"}selected{/if}>{$vo}</option>
+                                                    {/volist}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="discuss-footer">
+                            <!-- 提交按钮 -->
+                            <button type="button" id="formSubmit" class="btn btn-danger btn-width btn-submit">立即创建</button>
+                            <button type="button" class="btn btn-default m-r-xs btn-width" data-dismiss="modal">取消</button>
+
+                            <!-- 隐藏字段: 动作 -->
+                            <input type="hidden" name="act" value="add"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- annex -->
+<script type="text/javascript">
+    // 回调函数[图片上传]
+    function _callback2(file, data) {
+        var data = $.parseJSON(data);
+        var src = '';
+        if (data.status) {
+            $("#cover_id_img2").val(data.id);
+            src = data.url || '__ROOT__' + data.path;
+            $("#staff-icon2").attr("src", src);
+        } else {
+            $.Prompt(data.info);
+        }
+    }
+
+    // 绑定事件[图片上传]
+    $("#upload_picture_img2").uploadify({
+        "height"          : 30,
+        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+        "fileObjName"     : "download",
+        "buttonText"      : "上传图片",
+        "uploader"        : "{:U('File/uploadPicture', array('session_id'=>session_id()))}",
+        "width"           : 120,
+        'removeTimeout'   : 1,
+        'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+        "onUploadSuccess" : _callback2,
+        'onFallback' : function() {
+            alert('未检测到兼容版本的Flash.');
+        }
+    });
+</script>
+<script type="text/javascript" src="/static/demo/staff/js/department-group-linkage.js"></script>
+<script type="text/javascript" src="/static/demo/staff/js/hide-show.js"></script>

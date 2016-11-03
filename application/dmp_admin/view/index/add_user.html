@@ -1,0 +1,74 @@
+<link href="/static/admin/themes/flat/theme.min.css" rel="stylesheet">
+<link href="/static/admin/css/simplebootadmin.css" rel="stylesheet">
+<link href="/static/admin/font-awesome/4.4.0/css/font-awesome.min.css"  rel="stylesheet" type="text/css">
+<!--[if IE 7]>
+<link rel="stylesheet" href="/static/admin/font-awesome/4.4.0/css/font-awesome-ie7.min.css">
+<![endif]-->
+<link rel="stylesheet" href="/static/admin/themes/flat/simplebootadminindex.min.css?">
+
+<link rel="stylesheet" href="/static/admin/css/simplebootadminindex-ie.css?" />
+
+<script type="text/javascript">
+	//全局变量
+	var GV = {
+		DIMAUB: "/",
+		JS_ROOT: "static/admin/js/",
+		TOKEN: ""
+	};
+</script>
+
+<script src="/static/admin/js/jquery.js"></script>
+<script src="/static/admin/js/wind.js"></script>
+
+<script src="/static/admin/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		#think_page_trace_open{
+			z-index:9999;
+		}
+	</style></head>
+<body>
+<div class="wrap">
+	<ul class="nav nav-tabs">
+		<li><a href="/dmp_admin/index/user">管理员</a></li>
+		<li class="active"><a href="/dmp_admin/index/add_user">管理员添加</a></li>
+	</ul>
+	<form method="post" class="form-horizontal" action="add_user">
+		<fieldset>
+			<div class="control-group">
+				<label class="control-label">用户名</label>
+				<div class="controls">
+					<input type="text" name="name">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">密码</label>
+				<div class="controls">
+					<input type="password" name="password">
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label">角色</label>
+				<div class="controls">
+					<select name="role">
+						{foreach name="role" item="v"}
+							<option name="role_name" value="{$v.id}">{$v.name}</option>
+						{/foreach}
+					</select>
+			</div>
+				</div>
+		</fieldset>
+		<div class="form-actions">
+			<button type="submit" class="btn btn-primary ">添加</button>
+			<!--<a class="btn" href="/index.php?g=Admin&m=user&a=index">返回</a>-->
+		</div>
+	</form>
+</div>
+<script src="/static/admin/js/common.js"></script>
+</body>
+</html>
+
+
+
+
+

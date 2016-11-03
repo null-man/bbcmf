@@ -1,0 +1,22 @@
+.bs-example {
+    position: relative;
+    padding: 45px 15px 15px;
+    border:1px solid #e5e5e5;
+    border-radius: 4px;
+}
+
+.bs-example:after {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #959595;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    content: "Example";
+}
+
+.bs-example:after {
+    content: "实例：" !important;
+}

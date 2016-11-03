@@ -1,0 +1,7 @@
+/*标签下拉框的样式*/
+@charset "UTF-8";
+.chosen-container-multi{width: 610px!important;border: none!important;}
+.chosen-container-multi .chosen-choices{border: none!important;background-image:none!important;}
+.chosen-container-active .chosen-choices{box-shadow: none!important;}
+.chosen-container-multi .chosen-choices li.search-choice{border: none!important;box-shadow: none;border-color: #f2f2f2;background-image:none}
+.chosen-container-multi .chosen-choices li.search-choice span{font-size: 14px!important;}

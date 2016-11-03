@@ -1,0 +1,356 @@
+<!-- 模态区域 开始 -->
+<div class="modal inmodal fade" id="add-task" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="add-department" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="add-group" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="add-staff" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="add-project" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="add-cp-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="add-topic" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="add-topic" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="refuse-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="stop-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="cancel-stop-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="refer-apply-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="refer-update-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="delay-apply-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="delay-update-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="refuse-delay-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="check-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="check-update-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="pige-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="redo-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade p-t-s50" id="time-record" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="assign-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="timer-task-info" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="timer-task-edit" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="password" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="topic" role="dialog" aria-hidden="true">
+	<div class="modal-dialog width-500 dialog-center">
+		<div class="col-sm-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h3>意见反馈</h3>
+					<div class="ibox-tools">
+						<a class="close-link"><i class="fa fa-times"></i></a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<p></p>
+					<p>
+					<h4><span class="black line-height-25">对本系统有任何功能建议，欢迎找蔡泸炜(068) 进行反馈；若使用过程中有bug的，请反馈给刘林(402)进行修复。谢谢支持！</span></h4>
+					<div class="clearfix center">
+						<div class="col-sm-12 btn-down">
+							<button class="btn btn-w-m btn-danger" data-dismiss="modal" type="button">我知道了</button>
+						</div>
+					</div>
+					</p>
+					<p></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal inmodal fade" id="unfinish-task" role="dialog" aria-hidden="true">
+	<div class="modal-dialog w-s350 dialog-center">
+		<div class="col-sm-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-content">
+					<p></p>
+					<p>
+					<h4><span class="black line-height-25 p-l-s15 font-s15">子任务还未全部完成，无法完成任务！</span></h4>
+					<div class="clearfix center">
+						<div class="col-sm-12 btn-down">
+							<button class="btn btn-w-m btn-danger" data-dismiss="modal" type="button">我知道了</button>
+						</div>
+					</div>
+					</p>
+					<p></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 模态区域 结束 -->
+<!-- Header:资源 -->
+<block name="resource">
+	<!-- base -->
+	<link href="/static/demo/staff/css/bootstrap.min.css?v=3.4.0" rel="stylesheet"/>
+	<link href="/static/demo/staff/css/style.css?v=2.2.1" rel="stylesheet"/>
+	<link href="/static/demo/staff/css/base.less" rel="stylesheet/less"/>
+	<!-- less -->
+	<script src="/static/demo/staff/js/less.min.js"></script>
+	<!-- style-addi -->
+	<link href="/static/demo/staff/css/style-addi.css" rel="stylesheet"/>
+</block>
+
+
+
+<!-- Body:主体内容 -->
+<block name="content">
+	<!-- 数据区域 开始 -->
+	<div class="wrapper wrapper-content">
+		<div class="row">
+			<!-- 左侧边栏 -->
+			<div class="sidebar-collapse">
+				<nav class="vice-nav">
+					<div class="ibox-title">部门管理</div>
+					<ul class="nav">
+                        <!-- 添加部门 -->
+						<li class="create-dep" data-toggle="modal" data-target="#add-department" onclick="loadAddHtml()"></li>
+
+						<!-- 部门清单 -->
+						{volist name="all" id="vo"}
+							<li {if condition="$id eq $vo['id']"}class="active"{/if}>
+								<a href="{:U('see', array('id'=>$vo['id']))}">
+									<img alt="image" class="img-circle fa-lg" src="{$vo.img_path|default='/static/demo/staff/css/icon/default-logo.png'}"/>
+									<span class="m-l-s5 department-member-name">{$vo.name}</span>
+								</a>
+							</li>
+						{/volist}
+					</ul>
+				</nav>
+			</div>
+
+
+			<!-- 部门区域 -->
+			<div class="m-l-s180 -m-t-s20">
+				<div class="ibox-title">
+					<h3>部门信息&nbsp;-&nbsp;<em class="green">{$data.name|default='创建部门'}</em></h3>
+				</div>
+				<div class="ibox-content sou-region">
+	                <div class="row">
+	                	<!-- 部门图标 -->
+						<div class="col-sm-2 center upload-img-region">
+							<div class="upload-img-box">
+								<div class="upload-pre-item">
+									<img src="{$data.img_path|default='/static/demo/staff/css/icon/default-logo.png'}"/>
+								</div>
+							</div>
+                            <div class="button">
+                                <p class="span-tip upload-img-size">图片尺寸：120X120</p>
+								<input type="file" id="upload_picture_img"/>
+								<input type="hidden" name="img" id="cover_id_img" value="{$data['img_path']}"/>
+							</div>
+						</div>
+
+	                	<!-- 部门信息 -->
+	                    <div class="col-sm-10">
+	                		<!-- 部门名称 -->
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name" placeholder="请输入部门名称...(必填)" value="{$data.name}">
+                            </div>
+	                		<!-- 部门描述 -->
+                            <div class="form-group">
+                                <textarea class="form-control" name="info" rows="5" placeholder="请输入部门描述...(必填)">{$data.info}</textarea>
+                            </div>
+
+                            <!-- 提交按钮 -->
+                            <button type="button" class="btn btn-default btn-sm btn-width btn-submit">确定保存</button>
+                            <notempty name="data">
+	                            <button type="button" class="btn btn-default btn-sm btn-width btn-delete">删除</button>
+	                        </notempty>
+	                        
+							<!-- 隐藏字段: 部门ID -->
+                            <input type="hidden" name="id" value="{$id}"/>
+	                    </div>
+	                </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</block>
+
+
+<!-- Foot:尾部脚本 -->
+<block name="script">
+	<!--<small class="run">978.12795639ms, &copy;福州云顶</small>-->
+	<!-- Mainly scripts -->
+	<script src="/static/demo/staff/js/jquery-2.1.1.min.js"></script>
+	<script src="/static/demo/staff/js/bootstrap.min.js?v=3.4.0"></script>
+	<script src="/static/demo/staff/js/plugins/metisMenu/jquery.metismenu.js"></script>
+	<script src="/static/demo/staff/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<!-- Custom and plugin javascript -->
+	<script src="/static/demo/staff/js/hplus.js"></script>
+	<script src="/static/demo/staff/js/plugins/pace/pace.min.js"></script>
+	<!-- prompt -->
+	<script src="/static/demo/staff/js/plugins/prompt/jquery.prompt.js"></script>
+	<!-- common -->
+	<script src="/static/demo/staff/js/common.js?v=1.7"></script>
+	<!-- datepicker -->
+	<script src="/static/demo/staff/js/plugins/my97datepicker/wdatepicker.js"></script>
+	<!-- annex -->
+	<script type="text/javascript" src="/static/demo/staff/static/uploadify/jquery.uploadify.min.js"></script>
+	<script type="text/javascript">
+		// 回调函数[图片上传]
+		function _callback(file, data) {
+	    	var data = $.parseJSON(data);
+	    	var src = '';
+	        if (data.status) {
+	        	$("#cover_id_img").val(data.id);
+	        	src = data.url || '__ROOT__' + data.path;
+	        	$("#cover_id_img").parents('.upload-img-region:first').find('.upload-img-box').html(
+	        		'<div class="upload-pre-item"><img src="' + src + '"/></div>'
+	        	);
+	        } else {
+		   		$.Prompt(data.info);
+	        }
+	    }
+
+	    // 绑定事件[图片上传]
+		$("#upload_picture_img").uploadify({
+	        "height"          : 30,
+	        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+	        "fileObjName"     : "download",
+	        "buttonText"      : "上传图片",
+	        "uploader"        : "{:U('File/uploadPicture', array('session_id'=>session_id()))}",
+	        "width"           : 120,
+	        'removeTimeout'	  : 1,
+	        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+	        "onUploadSuccess" : _callback,
+            'onFallback' : function() {
+                alert('未检测到兼容版本的Flash.');
+            }
+	    });
+	</script>
+	<!-- logic -->
+	<script type="text/javascript">
+		// ###公共函数
+		// 加载添加部门HTML
+	    function loadAddHtml() {
+	        $('#add-department').load("{:U('Department/add_dptment')}").show();
+	    }
+
+
+		// ###事件函数
+	    // 绑定事件[文档加载]
+	    $(function(){
+	        // 绑定事件[提交]
+			$(document).on("click", ".btn-submit", function(){
+	            // ###操作数据
+	            // 区域
+            	var $region = $(this).parents(".sou-region:first");
+	            // ID
+	            var $id 	= $('input[name="id"]', $region);
+	            // 图片
+	            var $img 	= $('input[name="img"]', $region);
+	            // 部门名称
+	            var $name 	= $('input[name="name"]', $region);
+	            // 部门描述
+	            var $info 	= $('textarea[name="info"]', $region);
+
+
+	            // ###重置样式
+	            $("input", $region).removeClass("warning-form");
+	            $("textarea", $region).removeClass("warning-form");
+	            $("select", $region).siblings(".chosen-container").removeClass("warning-form");
+
+
+	            // ###验证
+	            // 验证部门名称
+	            if ($name.val().length === 0) {
+        			$.Prompt("请填写部门名称", "warn");
+	                $name.addClass("warning-form");
+	                $name.focus();
+	                $name.select();
+	                return;
+	            }
+	            // 验证部门描述
+	            if ($info.val().length === 0) {
+        			$.Prompt("请填写部门描述", "warn");
+	                $info.addClass("warning-form");
+	                $info.focus();
+	                $info.select();
+	                return;
+	            }
+	            // 验证图片
+//	            if ($img.val().length === 0) {
+//        			$.Prompt("请设置部门图片", "warn");
+//	                return;
+//	            }
+
+
+	            // ###提交请求
+		        $.ajax({
+		            // 请求类型
+		            type:           "POST",
+		            // 请求URL
+		            url:            "{:U('sou')}",
+		            // 提交数据
+		            data:           { id: $id.val(), name: $name.val(), info: $info.val(), img: $img.val() },
+		            // 响应数据类型
+		            dataType:       "json",
+		            // 回调函数[提交前]
+		            beforeSend:     function() {
+		                // 显示Loading
+		                showLoading("提交中...")
+		            },
+		            // 回调函数[错误]
+		            error:          function(result) {
+		                $.Prompt("有异常哟！赶紧联系程序猿~", "fail");
+		            },
+		            // 回调函数[成功]
+		            success:        function(result) {
+		                if (result.status == '0') {
+		                	// ###失败
+		                    $.Prompt(result.message);
+		                } else {
+		                	// ###成功
+		                    $.Prompt(result.message, 'succ');
+		                    if (typeof(result.redirect) !== 'undefined' && result.redirect !== '') {
+		                        window.location.href = result.redirect;
+		                    }
+		                }
+		            }
+		        })
+	        })
+
+	        // 绑定事件[删除]
+			$(document).on("click", ".btn-delete", function(){
+				// ###删除警告
+				if (confirm('注意:删除的数据不可恢复, 请问您确认要执行删除操作吗?')) {
+		            // ###操作数据
+		            // 区域
+	            	var $region = $(this).parents(".sou-region:first");
+		            // ID
+		            var $id 	= $('input[name="id"]', $region);
+
+		            
+		            // ###提交请求
+			        $.ajax({
+			            // 请求类型
+			            type:           "POST",
+			            // 请求URL
+			            url:            "{:U('delete')}",
+			            // 提交数据
+			            data:           { id: $id.val() },
+			            // 响应数据类型
+			            dataType:       "json",
+			            // 回调函数[提交前]
+			            beforeSend:     function() {
+			                // 显示Loading
+			                showLoading("提交中...")
+			            },
+			            // 回调函数[错误]
+			            error:          function(result) {
+			                $.Prompt("有异常哟！赶紧联系程序猿~", "fail");
+			            },
+			            // 回调函数[成功]
+			            success:        function(result) {
+			                if (result.status == '0') {
+			                	// ###失败
+			                    $.Prompt(result.message);
+			                } else {
+			                	// ###成功
+			                    $.Prompt(result.message, 'succ');
+			                    if (typeof(result.redirect) !== 'undefined' && result.redirect !== '') {
+			                        window.location.href = result.redirect;
+			                    }
+			                }
+			            }
+			        })
+				}
+			})
+	    })
+	</script>
+</block>

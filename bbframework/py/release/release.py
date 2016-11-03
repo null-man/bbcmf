@@ -8,7 +8,8 @@ import glob
 import os
 import shutil
 
-todir = '../../../release'
+todir = '/Applications/XAMPP/xamppfiles/htdocs/web/bbframework/release'
+todir2 = '/Applications/XAMPP/xamppfiles/htdocs/web/bbframework'
 
 def version_check(version, cur_version):
 	return False
@@ -16,8 +17,8 @@ def version_check(version, cur_version):
 
 def main():
 
-
 	todirfull = os.path.abspath(todir)
+	print todirfull
 
 	bbframework = os.path.dirname(todirfull)
 
@@ -47,7 +48,7 @@ def main():
 		shutil.copytree(os.path.join(bbframework, i), os.path.join(todirfull, i))
 
 	for i in ['application', 'public']:
-		shutil.copytree(i, os.path.join(todirfull, i))
+		shutil.copytree(os.path.join(todir2, i), os.path.join(todirfull, i))
 
 
 	shutil.copy(os.path.join(bbframework, 'public', 'index.php'), os.path.join(todirfull, 'public'))

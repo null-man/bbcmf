@@ -1,0 +1,120 @@
+
+<link href="/static/admin/themes/flat/theme.min.css" rel="stylesheet">
+<link href="/static/admin/css/simplebootadmin.css" rel="stylesheet">
+<link href="/static/admin/font-awesome/4.4.0/css/font-awesome.min.css"  rel="stylesheet" type="text/css">
+
+
+<script type="text/javascript">
+	//全局变量
+	var GV = {
+		DIMAUB: "/",
+		JS_ROOT: "static/admin/js/",
+		TOKEN: ""
+	};
+</script>
+<body>
+<div class="wrap">
+	<ul class="nav nav-tabs">
+		<li><a href="/admin/index/menu">菜单</a></li>
+		<li class="active"><a href="/admin/index/add_menu">添加菜单</a></li>
+	</ul>
+	<form method="post" class="form-horizontal" action="add_menu">
+		<div class="control-group">
+			<label class="control-label">一级菜单:</label>
+			<div class="controls">
+				<select name="parentid">
+					{foreach name="parent_rule" item="vo"}
+						<option value="{$vo.id}">{$vo.name}</option>
+					{/foreach}
+				</select>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label">名称:</label>
+			<div class="controls">
+				<input type="text" name="name" >
+				<span class="form-required">*</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">应用:</label>
+			<div class="controls">
+				<input type="text" name="module" >
+				<span class="form-required">*</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">控制器:</label>
+			<div class="controls">
+				<input type="text" name="controller" >
+				<span class="form-required">*</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">方法:</label>
+			<div class="controls">
+				<input type="text" name="action" >
+				<span class="form-required">*</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">图标:</label>
+			<div class="controls">
+				<input type="text" name="icon" >
+				<a href="http://www.thinkcmf.com/font/icons" target="_blank">选择图标</a> 不带前缀fa-，如fa-user => user
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label">状态:</label>
+			<div class="controls">
+				<select name="show">
+					<option value="1">显示</option>
+					<option value="0">隐藏</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="form-actions">
+			<button class="btn btn-primary" type="submit">提交</button>
+		</div>
+	</form>
+</div>
+<script src="/static/admin/js/jquery.js"></script>
+<script src="/static/admin/js/wind.js"></script>
+<script src="/static/admin/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="/static/admin/js/common.js"></script>
+
+
+<script>
+	$(function() {
+		$(".js-ajax-close-btn").on('click', function(e) {
+			e.preventDefault();
+			Wind.use("artDialog", function() {
+				art.dialog({
+					id : "question",
+					icon : "question",
+					fixed : true,
+					lock : true,
+					background : "#CCCCCC",
+					opacity : 0,
+					content : "您确定需要关闭当前页面嘛？",
+					ok : function() {
+						setCookie('refersh_time_admin_menu_index', 1);
+						window.close();
+						return true;
+					}
+				});
+			});
+		});
+	});
+</script>
+</body>
+</html>
+
+
+
+
+

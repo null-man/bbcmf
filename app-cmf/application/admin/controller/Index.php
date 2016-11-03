@@ -34,7 +34,7 @@ class Index extends Common {
 
         if ($role_id == 1){
             $show_data = [];
-            foreach ($this->all('bbcmf_rule') as $key => $value) {
+            foreach ($this->all('rule') as $key => $value) {
                 $tmp = [];
                 foreach ($value as $k => $v) {
                     $tmp[$k] = ($k == 'src') ? admin_url($v): $v;
@@ -43,11 +43,11 @@ class Index extends Common {
             }
             $auth = json_encode(['data' => $show_data]);
         } else {
-            $role_auths = $this->all('bbcmf_role_auth', ['role_id' => $role_id]);
+            $role_auths = $this->all('role_auth', ['role_id' => $role_id]);
 
             $rule_arr = [];
             foreach ($role_auths as $key => $role_auth) {
-                $rule_info = $this->one('bbcmf_rule', ['id' => $role_auth['rule_id']]);
+                $rule_info = $this->one('rule', ['id' => $role_auth['rule_id']]);
                 $rule_info['src'] = admin_url($rule_info['src']);
                 array_push($rule_arr, $rule_info);
             }
@@ -67,16 +67,16 @@ class Index extends Common {
         $admin_id = session('id');
 
         if (IS_GET) {    
-            $this->assign('site_config', $this->one('bbcmf_site_config', ['admin_id' => $admin_id]));
+            $this->assign('site_config', $this->one('site_config', ['admin_id' => $admin_id]));
             return $this->fetch('web_config');    
         }
 
         if (IS_POST) {
-            if ($this->one('bbcmf_site_config', ['admin_id' => $admin_id])) {
-                $ret = $this->update('bbcmf_site_config', $_POST, ['admin_id' => $admin_id]);
+            if ($this->one('site_config', ['admin_id' => $admin_id])) {
+                $ret = $this->update('site_config', $_POST, ['admin_id' => $admin_id]);
             } else {
                 $_POST['admin_id'] = $admin_id;
-                $ret = $this->insert('bbcmf_site_config', $_POST);
+                $ret = $this->insert('site_config', $_POST);
             }
 
             return $this->resultRedirect($ret, 'siteConfig');
@@ -90,12 +90,12 @@ class Index extends Common {
     // ----------------------------------
     public function siteSet(){
         if (IS_GET) {
-            $this->assign('site_set', $this->one('bbcmf_site_set', ['id' => 1]));
+            $this->assign('site_set', $this->one('site_set', ['id' => 1]));
             return $this->fetch('web_set');
         }
 
         if (IS_POST) {
-            $ret = $this->update('bbcmf_site_set', $_POST, ['id' => 1]);
+            $ret = $this->update('site_set', $_POST, ['id' => 1]);
             return $this->resultRedirect($ret, 'siteSet');
         }
     }
@@ -108,12 +108,12 @@ class Index extends Common {
     public function userInfo(){
         if (IS_GET) {
             // 用户信息
-            $userinfo = $this->one('bbcmf_admin', ['id' => session('id')]);
+            $userinfo = $this->one('admin', ['id' => session('id')]);
             $this->assign('user', $userinfo);
             // 用户角色
-            $this->assign('user_role', $this->one('bbcmf_role', ['id' => $userinfo['role_id']]));
+            $this->assign('user_role', $this->one('role', ['id' => $userinfo['role_id']]));
             // 用户组
-            $this->assign('user_group', $this->one('bbcmf_group', ['id' => $userinfo['group_id']]));
+            $this->assign('user_group', $this->one('group', ['id' => $userinfo['group_id']]));
 
             return $this->fetch('user');
         }
@@ -138,7 +138,7 @@ class Index extends Common {
                 unset($_POST['password']);
             }
 
-            return $this->resultResponseAjax($this->update('bbcmf_admin', $_POST, ['id' => session('id')]));
+            return $this->resultResponseAjax($this->update('admin', $_POST, ['id' => session('id')]));
         }
     }
 
@@ -150,7 +150,7 @@ class Index extends Common {
         // ###组装树形结构
         // 获取树形结构名称
         $name_arr = [];
-        foreach (explode('|', $this->treeStyleData('bbcmf_group', "\$id - \$spacer \$group |")) as $_k => $_v) {
+        foreach (explode('|', $this->treeStyleData('group', "\$id - \$spacer \$group |")) as $_k => $_v) {
             if ($_v) {
                 $k_v_arr = explode(' - ', $_v);
                 $name_arr[$k_v_arr[0]] = $k_v_arr[1];
@@ -159,7 +159,7 @@ class Index extends Common {
 
         // 重新组装名称
         $show_data = [];
-        foreach ($this->all('bbcmf_group') as $key => $rule) {
+        foreach ($this->all('group') as $key => $rule) {
             foreach ($rule as $k => $v) {
                 $tmp[$k] = ($k == 'group') ? $name_arr[$rule['id']] : $v; 
             }

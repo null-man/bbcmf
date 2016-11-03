@@ -47,9 +47,9 @@ class Common extends Controller {
 			}
 
 			// session个人信息
-			$user = $this->one('bbcmf_admin', ['username' => $this->admin]);
+			$user = $this->one('admin', ['username' => $this->admin]);
 			// 获取网站配置
-			$this->assign('config', $this->one('bbcmf_site_config', ['admin_id' => $user['id']]));
+			$this->assign('config', $this->one('site_config', ['admin_id' => $user['id']]));
 			$this->assign('user',$user);
 
 			$this->set_session($user);
@@ -81,14 +81,14 @@ class Common extends Controller {
         }
 
         // 获取用户
-        $user 		= $this->one('bbcmf_admin', ['id' => $uid]);
+        $user 		= $this->one('admin', ['id' => $uid]);
         // 角色对应的权限
-        $user_rules = $this->all('bbcmf_role_auth', ['role_id' => $user['role_id']]);
+        $user_rules = $this->all('role_auth', ['role_id' => $user['role_id']]);
         // 权限
         $auth 		= false;
 
         foreach ($user_rules as $k => $user_rule) {
-        	$user_rule_info = $this->one('bbcmf_rule', ['id' => $user_rule['rule_id']]);
+        	$user_rule_info = $this->one('rule', ['id' => $user_rule['rule_id']]);
         	if (strtolower($user_rule_info['src']) === strtolower($rule)) {
         		$auth = true;
         		break;
@@ -190,8 +190,9 @@ class Common extends Controller {
 	// 删除逻辑
 	// ----------------------------------
 	public function logicDelete(){
-		$id = I('id', 0);
-		return !empty($id) ? $this->resultResponseAjax($this->delete($this->table, ['id' => $id])) : false;
+		$data = method_exists($this, 'getParamsDelete') ? call_user_func_array([$this, 'getParamsDelete'], []) : $_POST;
+
+		return isset($data['id']) && !empty($data['id']) ? $this->resultResponseAjax($this->delete($this->table, ['id' => $data['id']])) : false;
 	}
 
 

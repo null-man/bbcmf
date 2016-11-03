@@ -1,0 +1,100 @@
+<link href="/static/admin/themes/flat/theme.min.css" rel="stylesheet">
+<link href="/static/admin/css/simplebootadmin.css" rel="stylesheet">
+<link href="/static/admin/font-awesome/4.4.0/css/font-awesome.min.css"  rel="stylesheet" type="text/css">
+<script type="text/javascript">
+	//全局变量
+	var GV = {
+		DIMAUB: "/",
+		JS_ROOT: "static/admin/js/",
+		TOKEN: ""
+	};
+</script>
+<style>
+	.length_3{width: 180px;}
+	form .input-order{margin-bottom: 0px;padding:3px;width:40px;}
+	.table-actions{margin-top: 5px; margin-bottom: 5px;padding:0px;}
+	.table-list{margin-bottom: 0px;}
+</style>
+<script src="/static/admin/js/jquery.js"></script>
+<script src="/static/admin/js/wind.js"></script>
+
+<script src="/static/admin/js/common.js"></script>
+
+<script src="/static/admin/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		#think_page_trace_open{
+			z-index:9999;
+		}
+	</style><style>.expander{margin-left: -20px;}</style>
+</head>
+<body>
+<div class="wrap js-check-wrap">
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="javascript:;">权限设置</a></li>
+	</ul>
+	<form class="js-ajax-form" method="post">
+		<div class="table_full">
+			<table width="100%" cellspacing="0" id="dnd-example">
+				<tbody>
+				{foreach name="all_auth" id="vo"}
+					{php}
+						if (in_array($vo['id'], $auth_ids)){
+							echo "<tr>"
+								."<td style='padding-left:30px;'>"
+								."<input type='checkbox' name='items' checked='checked' value='"
+								.$vo["id"]
+								."'>"
+								.$vo['name']
+								."</td>"
+								."</tr>";
+						}else{
+							echo "<tr>"
+								."<td style='padding-left:30px;'>"
+								."<input type='checkbox' name='items' value='"
+								.$vo["id"]
+								."'>"
+								.$vo['name']
+								."</td>"
+							."</tr>";
+						}
+					{/php}
+				{/foreach}
+				</tbody>
+			</table>
+		</div>
+		<div class="form-actions">
+			<input type="hidden" name="roleid" value="2" />
+			<button class="btn btn-primary " id="btn" type="button">保存</button>
+		</div>
+	</form>
+</div>
+
+<script type="application/javascript">
+	$("#btn").click(function(){
+
+		var obj=document.getElementsByName('items');  //选择所有name="'items'"的对象，返回数组
+		//取到对象数组后，我们来循环检测它是不是被选中
+		var text='';
+		for(var i=0; i<obj.length; i++){
+			if(obj[i].checked) text+=obj[i].value+',';  //如果选中，将value添加到变量s中
+		}
+
+		$.post("role_auth_front",
+				{
+					id:"{$id}",
+					auth:text
+				},
+				function(data){
+					if(data == 0){
+						alert("失败")
+					}else if(data == 1){
+						alert("成功")
+						location="/admin/index/rbac"
+					}
+				}
+		)
+	})
+</script>
+
+</body>
+</html>

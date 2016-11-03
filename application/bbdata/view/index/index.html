@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="/static/bbdata/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/static/bbdata/css/global.css"/>
+		<link rel="stylesheet" href="/static/bbdata/css/font.css" />
+		<title></title>
+	</head>
+	<body>
+		<div class="g_nav navbar-fixed-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="logo pull-left">
+							<!-- <img src="https://d1p3dh66omwgxt.cloudfront.net/wp-content/themes/seedoc/img/logo.png" /> -->
+							<img src="/static/bbdata/img/Babybus-Data.png" />
+						</div>
+						<ul class="nav navbar-nav pull-right">
+							<li class="user">
+								<a class="aimg dropdown-toggle" id="userInfo" data-toggle="dropdown">
+									<img class="userIcon" src="http://image.youzhan.org/e/35/22ccaf4c24ef690f7767e6a3ba5f0.png"/>
+								</a>
+							  	<ul class="userInfo dropdown-menu" aria-labelledby="userInfo">
+							   		<li><a href="#">个人中心</a></li>
+								    <li><a href="/bbdata/login/logout">退出</a></li>
+							  	</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container g_c">
+			<div class="row">
+				{foreach name="all_module" id="vo"}
+					<div class="col-lg-4 m_crad">
+						<div class="thumbnail">
+							<a href="{$vo.rule_name}">
+								<img src="{$vo.cover}"/>
+								<h3><span>{$vo.name}</span> <span class="pull-right label label-success">已开通</span></h3>
+							</a>
+						</div>
+					</div>
+				{/foreach}
+			</div>
+		</div>
+		<script src="//cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="//cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	</body>
+</html>

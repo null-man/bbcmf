@@ -26,7 +26,7 @@ class Login extends Common {
         }
 
         // 获取网站配置
-        $this->assign('config', $this->one('bbcmf_site_set', ['id' => 1]));
+        $this->assign('config', $this->one('site_set', ['id' => 1]));
         return $this->fetch('index');
     }
 
@@ -48,7 +48,7 @@ class Login extends Common {
         $auto_login = isset($_POST['auto_login']) ? $_POST['auto_login'] : '0';
 
         // 网站配置信息
-        $site_set = $this->one('bbcmf_site_set', ['id' => 1]);
+        $site_set = $this->one('site_set', ['id' => 1]);
 
         if (true) {
             // ###数据合法性校验
@@ -76,7 +76,7 @@ class Login extends Common {
 
         // ###校验账户登录合法性
         // 获取该账户信息
-        $user_info = $this->one('bbcmf_admin', ['username' => $username]);
+        $user_info = $this->one('admin', ['username' => $username]);
         
         if (!empty($user_info)) {
             // 密码校验
@@ -107,7 +107,7 @@ class Login extends Common {
     // ----------------------------------
     public function register(){
         if (IS_GET) {
-            if ($this->one('bbcmf_site_set', ['id' => 1])['free_reg'] == 0 ) {
+            if ($this->one('site_set', ['id' => 1])['free_reg'] == 0 ) {
                 return $this->error("(┛ಠДಠ)┛ 你想做什么羞羞的事 ");
             }
 
@@ -118,14 +118,14 @@ class Login extends Common {
             $username = trim($_POST['username']);
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-            $admin_info = $this->one('bbcmf_admin', ['username' => $username]);
+            $admin_info = $this->one('admin', ['username' => $username]);
 
             if ($admin_info) {
                 return $this->error('(┛ಠДಠ)┛ 该用户名已被注册 ');
             }
 
             $ret = $this->insert(
-                'bbcmf_admin', 
+                'admin',
                 [
                     'username' => $username, 
                     'password' => $password,

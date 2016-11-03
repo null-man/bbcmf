@@ -1,0 +1,726 @@
+<!-- 模态区域 开始 -->
+<div class="modal inmodal fade" id="add-task" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="add-department" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="add-group" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="add-staff" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="add-project" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="add-cp-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="add-topic" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="add-topic" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="refuse-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="stop-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="cancel-stop-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="refer-apply-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="refer-update-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="delay-apply-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="delay-update-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="refuse-delay-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="check-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="check-update-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="pige-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="redo-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade p-t-s50" id="time-record" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="assign-task" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="timer-task-info" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="timer-task-edit" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="password" role="dialog" aria-hidden="true"></div>
+<div class="modal inmodal fade" id="topic" role="dialog" aria-hidden="true">
+    <div class="modal-dialog width-500 dialog-center">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h3>意见反馈</h3>
+                    <div class="ibox-tools">
+                        <a class="close-link"><i class="fa fa-times"></i></a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <p></p>
+                    <p>
+                    <h4><span class="black line-height-25">对本系统有任何功能建议，欢迎找蔡泸炜(068) 进行反馈；若使用过程中有bug的，请反馈给刘林(402)进行修复。谢谢支持！</span></h4>
+                    <div class="clearfix center">
+                        <div class="col-sm-12 btn-down">
+                            <button class="btn btn-w-m btn-danger" data-dismiss="modal" type="button">我知道了</button>
+                        </div>
+                    </div>
+                    </p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal inmodal fade" id="unfinish-task" role="dialog" aria-hidden="true">
+    <div class="modal-dialog w-s350 dialog-center">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <p></p>
+                    <p>
+                    <h4><span class="black line-height-25 p-l-s15 font-s15">子任务还未全部完成，无法完成任务！</span></h4>
+                    <div class="clearfix center">
+                        <div class="col-sm-12 btn-down">
+                            <button class="btn btn-w-m btn-danger" data-dismiss="modal" type="button">我知道了</button>
+                        </div>
+                    </div>
+                    </p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 模态区域 结束 -->
+
+<!-- Header:资源 -->
+
+    <!-- base -->
+    <link href="/static/demo/staff/css/bootstrap.min.css?v=3.4.0" rel="stylesheet">
+    <link href="/static/demo/staff/css/style.css?v=2.2.1" rel="stylesheet">
+    <link href="/static/demo/staff/css/base.less" rel="stylesheet/less">
+    <link href="/static/demo/staff/css/hide-show.css" rel="stylesheet">
+    <!-- less -->
+    <script src="/static/demo/staff/js/less.min.js"></script>
+    <!-- style-addi -->
+    <link href="/static/demo/staff/css/style-addi.css" rel="stylesheet"/>
+
+    <!-- 数据区域 开始 -->
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <!-- 左侧边栏 -->
+            <div class="sidebar-collapse">
+                <nav class="vice-nav">
+                    <div class="ibox-title">员工管理</div>
+                    <ul class="nav">
+                        <!-- 添加员工 -->
+                        <li class="create-staff" data-toggle="modal" data-target="#add-staff" onclick="loadAddHtml()"></li>
+
+                        <!-- ###公司图谱 开始 -->
+                        <li><div class="ibox-title department-name">公司构成</div></li>
+
+                        <!-- 公司主管 -->
+                        {volist name="graph.leaders" id="vo_l"}
+                            <li>
+                                <a href="{:U('see', array('id'=>$vo_l['id']))}" class="hs-3 j-hide-show">
+                                    <img alt="image" class="img-circle fa-lg" src="{$vo_l.img_path|default='/static/demo/staff/css/icon/default-logo.png'}"/>
+                                    <span class="m-l-s5">{$vo_l.name}<span class="yellow">(跨部门)</span></span>
+                                </a>
+                            </li>
+                        {/volist}
+
+                        <!-- 公司部门 -->
+                        {volist name="graph.departments" id="vo_d"}
+                            <li>
+                                <!-- 部门名称 -->
+                                <a href="#!" class="hs-1 j-hide-show">
+                                    <!-- 超级管理员特殊显示 -->
+                                    {if condition="$vo_d.id eq 0"}
+                                        <span class="m-l-s5 red">{$vo_d.name}</span>
+                                    {else/}
+                                        <span class="m-l-s5">{$vo_d.name}</span>
+                                    {/if}
+                                </a>
+
+                                <!-- 部门组别信息 -->
+                                <ul class="nav" style="display:none;">
+                                    <!-- 部门主管 -->
+                                    {volist name="vo_d.leaders" id="vo_dl"}
+                                        <li>
+                                            <a href="{:U('see', array('id'=>$vo_dl['id']))}" class="hs-3 j-hide-show">
+                                                <img alt="image" class="img-circle fa-lg" src="{$vo_dl.img_path|default='/static/demo/staff/css/icon/default-logo.png'}"/>
+                                                <span class="m-l-s5">{$vo_dl.name}<span class="blue">(部长)</span></span>
+                                            </a>
+                                        </li>
+                                    {/volist}
+
+
+                                    <!-- 部门组别 -->
+                                    {volist name="vo_d.groups" id="vo_g"}
+                                        <li>
+                                            <a href="#!" class="hs-1 j-hide-show hs-active">
+                                                <!-- 超级管理员特殊显示 -->
+                                                {if condition="$vo_d['id'] eq 0"}
+                                                    <span class="m-l-s5 font-s13 red">- {$vo_g.name}</span>
+                                                {else/}
+                                                    <span class="m-l-s5 font-s13">- {$vo_g.name}</span>
+                                                {/if}
+                                            </a>
+                                            <ul class="nav" style="display:none;">
+                                                <!-- 组别主管 -->
+                                                {volist name="vo_g.leaders" id="vo_gl"}
+                                                    <li>
+                                                        <a href="{:U('see', array('id'=>$vo_gl['id']))}" class="hs-3 j-hide-show">
+                                                            <img alt="image" class="img-circle fa-lg" src="{$vo_gl.img_path|default='/static/demo/staff/css/icon/default-logo.png'}"/>
+                                                            <span class="m-l-s5">{$vo_gl.name}<span class="green">(组长)</span></span>
+                                                        </a>
+                                                    </li>
+                                                {/volist}
+
+                                                <!-- 组别员工 -->
+                                                {volist name="vo_g.staffs" id="vo_gs"}
+                                                    <li>
+                                                        <a href="{:U('see', array('id'=>$vo_gs['id']))}" class="hs-3 j-hide-show">
+                                                            <img alt="image" class="img-circle fa-lg" src="{$vo_gs.img_path|default='/static/demo/staff/css/icon/default-logo.png'}"/>
+                                                            <span class="m-l-s5">{$vo_gs.name}</span>
+                                                        </a>
+                                                    </li>
+                                                {/volist}
+                                            </ul>
+                                        </li>
+                                    {/volist}
+                                </ul>
+                            </li>
+                        {/volist}
+                        <!-- ###公司图谱 结束 -->
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- 员工区域 -->
+            <div class="m-l-s180 -m-t-s20">
+                <div class="ibox-title">
+                    <h3>员工信息&nbsp;-&nbsp;<em class="green">{$data.name|default='创建员工'}</em></h3>
+                </div>
+                <div class="ibox-content sou-region">
+                    <div class="row">
+                        <!-- 员工图标 -->
+                        <div class="col-sm-2 center upload-img-region">
+                            <div class="upload-img-box">
+                                <div class="upload-pre-item"><img src="{$data.img_path|default='/static/demo/staff/css/icon/default-logo.png'}"/></div>
+                            </div>
+                            <div class="button">
+                                <p class="span-tip upload-img-size">图片尺寸：120X120</p>
+                                <input type="file" id="upload_picture_img">
+                                <input type="hidden" name="img" id="cover_id_img" value="{$data.img}"/>
+                            </div>
+                        </div>
+
+                        <!-- 员工信息 -->
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <div class="well nav-task-body bg-white">
+                                    <div class="row">
+                                        <!-- 工号 -->
+                                        <div class="col-sm-2">
+                                            <h4 class="font-s12">工号<label class="required-fields">*</label></h4>
+                                            <div class="staff-name">
+                                                <input type="text" name="no" value="{$data.no}"/>
+                                            </div>
+                                        </div>
+
+                                        <!-- 姓名 -->
+                                        <div class="col-sm-2">
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">姓名<label class="required-fields">*</label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <input type="text" name="name" value="{$data.name}"/>
+                                            </div>
+                                        </div>
+
+                                        <!-- 昵称 -->
+                                        <div class="col-sm-2">
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">昵称<label class="required-fields">*</label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <input type="text" name="nick_name" value="{$data.nick_name}"/>
+                                            </div>
+                                        </div>
+
+                                        <!-- 密码 -->
+                                        <div class="col-sm-3">
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">密码<label class="required-fields"></label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <input type="password" name="password" value=""/>
+                                            </div>
+                                        </div>
+
+                                        <!-- 确认密码 -->
+                                        <div class="col-sm-3">
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">确认密码<label class="required-fields"></label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <input type="password" name="repassword" value=""/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="well nav-task-body bg-white">
+                                    <div class="row">
+                                        <!-- 系统角色 -->
+                                        <div class="col-sm-3" {if condition="$Think.session.ROLE_ID elt 2"} style="display: block;"{else/}style="display: none;{/if} >
+                                            <h4 class="font-s12">系统角色<label class="required-fields">*</label></h4>
+                                            <div class="staff-name">
+                                                <select class="form-control" name="role_id" {if condition="$data['id'] eq 1"}disabled{/if}>
+                                                    <option value="">请选择系统角色</option>
+                                                    {volist name="roles" id="vo"}
+                                                        <option value="{$vo.id}" {if condition="$vo.id eq $data['role_id']"}selected{/if}>{$vo.name}</option>
+                                                    {/volist}
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- QQ -->
+                                        <div class="col-sm-3">
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">QQ<label class="required-fields"></label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <input type="text" name="qq" value="{$data.qq}"/>
+                                            </div>
+                                        </div>
+
+                                        <!-- 电话 -->
+                                        <div class="col-sm-3">
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">电话<label class="required-fields"></label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <input type="text" name="phone" value="{$data.phone}"/>
+                                            </div>
+                                        </div>
+
+                                        <!-- 邮箱 -->
+                                        <div class="col-sm-3">
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">邮箱<label class="required-fields"></label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <input type="text" name="mail" value="{$data.mail}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="well nav-task-body bg-white">
+                                    <div class="row ajaxWebDepartments" url={:admin_url("/admin/staff/ajaxWebDepartments/id/$id")}>
+                                        <!-- 所属部门 -->
+                                        <div class="col-sm-3">
+                                            <h4 class="font-s12">所属部门<label class="required-fields">*</label></h4>
+                                            <div class="staff-name">
+                                                <select class="form-control" name="department_id" {if condition="$data['id'] eq 1"}disabled{/if}>department_list
+                                                    <option value="">请选择所属部门</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- 所属组别 -->
+                                        <div class="col-sm-3">
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">所属组别<label class="required-fields">*</label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <select class="form-control" name="group_id" {if condition="$data['id'] eq 1"}disabled{/if}>
+                                                    <option value="">请选择从属组别</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- 是否管理者 -->
+                                        <div class="col-sm-3" {if condition="$Think.session.ROLE_ID elt 2"}style="display: block;"{else/}style="display: none;{/if}>
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">是否管理者<label class="required-fields"></label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <select class="form-control" name="leader_kind" {if condition="$data['id'] eq 1"}disabled{/if}>
+                                                    <option value="">请选择管理者类型</option>
+                                                    {volist name="leaders" id="vo"}
+                                                        <option value="{$vo.id}" {if condition="$vo.id eq $data['leader_kind']"}selected{/if}>{$vo.name}</option>
+                                                    {/volist}
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- 员工职位 -->
+                                        <div class="col-sm-3">
+                                            <em class="ding-line-m"></em>
+                                            <h4 class="font-s12 m-l-s10">员工职位<label class="required-fields">*</label></h4>
+                                            <div class="staff-name m-l-s10">
+                                                <select class="form-control" name="position_id" {if condition="$data['id'] eq 1"}disabled{/if}>
+                                                    <option value="">请选择员工职位</option>
+                                                    {volist name="positions" id="vo"}
+                                                        <option value="{$vo.id}" {if condition="$vo.id eq $data['position_id']"}selected{/if}>{$vo.name}</option>
+                                                    {/volist}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 员工状态 -->
+                            <div class="form-group">
+                                <div class="well nav-task-body bg-white">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h4 class="font-s12">状态<label class="required-fields">*</label></h4>
+                                            <div class="staff-name">
+                                                <select class="form-control" name="status" {if condition="$data['id'] eq 1"}disabled{/if}>
+                                                    <option value="">请选择状态</option>
+                                                    {volist name="statuses" id="vo"}
+                                                        <option value="{$key}" {if condition="$key eq $data['status']"}selected{/if}>{$vo}</option>
+                                                    {/volist}
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 按钮区域 -->
+                            <notempty name="data">
+                                {if condition="$data['id'] neq 1"}
+                                    <!-- 提交按钮 -->
+                                    <button type="button" class="btn btn-default btn-sm btn-width btn-submit">确定保存</button>
+
+                                        <button type="button" class="btn btn-default btn-sm btn-width btn-delete">删除</button>
+
+
+                                    <!-- 隐藏字段: 员工ID -->
+                                    <input type="hidden" name="id" value="{$data.id}"/>
+                                    <!-- 隐藏字段: 动作 -->
+                                    <input type="hidden" name="act" value="edit"/>
+                                {else/}
+                                    <!-- 提交按钮 -->
+                                    <button type="button" class="btn btn-default btn-sm btn-width btn-submit">确定保存</button>
+
+                                    <!-- 隐藏字段: 员工ID -->
+                                    <input type="hidden" name="id" value="0"/>
+                                    <!-- 隐藏字段: 动作 -->
+                                    <input type="hidden" name="act" value="add"/>
+                                {/if}
+                            </notempty>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<!-- Foot:尾部脚本 -->
+<block name="script">
+    <!--<small class="run">978.12795639ms, &copy;福州宝宝巴士</small>-->
+    <!-- Mainly scripts -->
+    <script src="/static/demo/staff/js/jquery-2.1.1.min.js"></script>
+    <script src="/static/demo/staff/js/bootstrap.min.js?v=3.4.0"></script>
+    <script src="/static/demo/staff/js/plugins/metisMenu/jquery.metismenu.js"></script>
+    <script src="/static/demo/staff/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- Custom and plugin javascript -->
+    <script src="/static/demo/staff/js/hplus.js"></script>
+    <script src="/static/demo/staff/js/plugins/pace/pace.min.js"></script>
+    <!-- prompt -->
+    <script src="/static/demo/staff/js/plugins/prompt/jquery.prompt.js"></script>
+    <!-- common -->
+    <script src="/static/demo/staff/js/common.js?v=1.7"></script>
+    <!-- datepicker -->
+    <script src="/static/demo/staff/js/plugins/my97datepicker/wdatepicker.js"></script>
+    <!-- annex -->
+    <script type="text/javascript" src="/static/demo/staff/static/uploadify/jquery.uploadify.min.js"></script>
+    <!-- linkage -->
+    <link href="/static/demo/staff/js/plugins/chosen/chosen.min.css" rel="stylesheet">
+    <link href="/static/demo/staff/css/copyto.css?v=2" rel="stylesheet">
+    <script type="text/javascript" src="/static/demo/staff/js/plugins/chosen/chosen.jquery.min.js"></script>
+    <script type="text/javascript" src="/static/demo/staff/js/department-group-linkage.js"></script>
+    <script type="text/javascript" src="/static/demo/staff/js/hide-show.js"></script>
+    <script type="text/javascript">
+        // 回调函数[图片上传]
+        function _callback(file, data) {
+            var data = $.parseJSON(data);
+            var src = '';
+            if (data.status) {
+                $("#cover_id_img").val(data.id);
+                src = data.url || '__ROOT__' + data.path;
+                $("#cover_id_img").parents('.upload-img-region:first').find('.upload-img-box').html(
+                    '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+                );
+            } else {
+                $.Prompt(data.info);
+            }
+        }
+
+        // 绑定事件[图片上传]
+        $("#upload_picture_img").uploadify({
+            "height"          : 30,
+            "swf"             : "/static/demo/staff/static/uploadify/uploadify.swf",
+            "fileObjName"     : "download",
+            "buttonText"      : "上传图片",
+            "uploader"        : "{:U('File/uploadPicture', array('session_id'=>session_id()))}",
+            "width"           : 120,
+            'removeTimeout'   : 1,
+            'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+            "onUploadSuccess" : _callback,
+            'onFallback' : function() {
+                alert('未检测到兼容版本的Flash.');
+            }
+        });
+    </script>
+    <!-- logic -->
+    <script type="text/javascript">
+        // ###公共函数
+        // 加载添加部门HTML
+        function loadAddHtml() {
+            $('#add-staff').load("{:admin_url('Staff/add_staff')}").show();
+        }
+
+
+        // ###事件函数
+        // 绑定事件[文档加载]
+        $(function(){
+            // 绑定事件[提交]
+            $(document).on("click", ".btn-submit", function(){
+                // ###操作数据
+                // 区域
+                var $region         = $(this).parents(".sou-region:first");
+                // 动作
+                var $act            = $('input[name="act"]', $region);
+                // ID
+                var $id             = $('input[name="id"]', $region);
+                // 图片
+                var $img            = $('input[name="img"]', $region);
+                // 工号
+                var $no             = $('input[name="no"]', $region);
+                // 姓名
+                var $name           = $('input[name="name"]', $region);
+                // 昵称
+                var $nick_name      = $('input[name="nick_name"]', $region);
+                // 密码
+                var $password       = $('input[name="password"]', $region);
+                // 确认密码
+                var $repassword     = $('input[name="repassword"]', $region);
+                // 系统角色
+                var $role_id        = $('select[name="role_id"]', $region);
+                // QQ
+                var $qq             = $('input[name="qq"]', $region);
+                // 电话
+                var $phone          = $('input[name="phone"]', $region);
+                // 邮箱
+                var $mail           = $('input[name="mail"]', $region);
+                // 部门
+                var $department_id  = $('select[name="department_id"]', $region);
+                // 组别
+                var $group_id       = $('select[name="group_id"]', $region);
+                // 是否管理者
+                var $leader_kind    = $('select[name="leader_kind"]', $region);
+                // 员工职位
+                var $position_id    = $('select[name="position_id"]', $region);
+                // 状态
+                var $status         = $('select[name="status"]', $region);
+
+
+
+                // ###重置样式
+                $("input", $region).removeClass("warning-form");
+                $("textarea", $region).removeClass("warning-form");
+                $("select", $region).siblings(".chosen-container").removeClass("warning-form");
+
+
+                // ###验证
+                // 验证工号
+                if ($no.val().length === 0) {
+                    $no.addClass("warning-form");
+                    $.Prompt('工号为空!');
+                    return;
+                }
+                // 验证姓名
+                if ($name.val().length === 0) {
+                    $name.addClass("warning-form");
+                    $.Prompt('姓名为空!');
+                    return;
+                }
+                // 验证昵称
+                if ($nick_name.val().length === 0) {
+                    $nick_name.addClass("warning-form");
+                    $.Prompt('昵称为空!');
+                    return;
+                }
+                // 验证密码 & 确认密码
+                if ($act.val() === 'add') {
+                    // 验证密码
+                    if ($password.val().length === 0) {
+                        $password.addClass("warning-form");
+                        $.Prompt('密码为空!');
+                        return;
+                    }
+
+                    // 验证确认密码
+                    if ($repassword.val().length === 0) {
+                        $repassword.addClass("warning-form");
+                        $.Prompt('确认密码为空!');
+                        return;
+                    }
+
+                    // 验证密码与确认密码相同
+                    if ($password.val() !== $repassword.val()) {
+                        $password.addClass("warning-form");
+                        $repassword.addClass("warning-form");
+                        $.Prompt('密码与确认密码不一致!');
+                        return;
+                    }
+                } else {
+                    // 验证密码
+                    if ($password.val() !== '') {
+                        if ($password.val() !== $repassword.val()) {
+                            $password.addClass("warning-form");
+                            $repassword.addClass("warning-form");
+                            $.Prompt('密码与确认密码不一致!');
+                            return;
+                        }
+                    }
+                }
+                // 验证系统角色
+                if ($role_id.val().length === 0) {
+                    $role_id.addClass("warning-form");
+                    $.Prompt('请选择系统角色!');
+                    return;
+                }
+                // 验证所属部门
+                // if ($department_id.val().length === 0) {
+                //     $department_id.addClass("warning-form");
+                //     return;
+                // }
+                // 验证所属组别
+                // if ($group_id.val().length === 0) {
+                //     $group_id.addClass("warning-form");
+                //     return;
+                // }
+                // 验证是否管理者
+                if ($leader_kind.val().length === 0) {
+                    $leader_kind.addClass("warning-form");
+                    $.Prompt('请选择管理者类型!');
+                    return;
+                }
+                // 验证员工职位
+                if ($position_id.val().length === 0) {
+                    $position_id.addClass("warning-form");
+                    $.Prompt('请选择员工职位!');
+                    return;
+                }
+                // 验证状态
+                if ($status.val().length === 0) {
+                    $status.addClass("warning-form");
+                    $.Prompt('请选择状态!');
+                    return;
+                }
+
+
+
+                // ###提交请求
+                $.ajax({
+                    // 请求类型
+                    type:           "POST",
+                    // 请求URL
+                    url:            "{:U('sou')}",
+                    // 提交数据
+                    data:           { 
+                        // ID
+                        id:             $id.val(),
+                        // 图片
+                        img:            $img.val(),
+                        // 工号
+                        no:             $no.val(),
+                        // 姓名
+                        name:           $name.val(),
+                        // 昵称
+                        nick_name:      $nick_name.val(),
+                        // 密码
+                        password:       $password.val(),
+                        // 系统角色
+                        role_id:        $role_id.val(),
+                        // QQ
+                        qq:             $qq.val(),
+                        // 电话
+                        phone:          $phone.val(),
+                        // 邮箱
+                        mail:           $mail.val(),
+                        // 部门
+                        department_id:  $department_id.val(),
+                        // 组别
+                        group_id:       $group_id.val(),
+                        // 是否管理者
+                        leader_kind:    $leader_kind.val(),
+                        // 员工职位
+                        position_id:    $position_id.val(),
+                        // 状态
+                        status:         $status.val(),
+                    },
+                    // 响应数据类型
+                    dataType:       "json",
+                    // 回调函数[提交前]
+                    beforeSend:     function() {
+                        // 显示Loading
+                        showLoading("提交中...")
+                    },
+                    // 回调函数[错误]
+                    error:          function(result) {
+                        $.Prompt("有异常哟！赶紧联系程序猿~", "fail");
+                    },
+                    // 回调函数[成功]
+                    success:        function(result) {
+                        if (result.status == '0') {
+                            // ###失败
+                            $.Prompt(result.message);
+                        } else {
+                            // ###成功
+                            $.Prompt(result.message, 'succ');
+                            if (typeof(result.redirect) !== 'undefined' && result.redirect !== '') {
+                                window.location.href = result.redirect;
+                            }
+                        }
+                    }
+                })
+            })
+
+            // 绑定事件[删除]
+            $(document).on("click", ".btn-delete", function(){
+                // ###删除警告
+                if (confirm('注意:删除的数据不可恢复, 请问您确认要执行删除操作吗?')) {
+                    // ###操作数据
+                    // 区域
+                    var $region = $(this).parents(".sou-region:first");
+                    // ID
+                    var $id     = $('input[name="id"]', $region);
+
+                    
+                    // ###提交请求
+                    $.ajax({
+                        // 请求类型
+                        type:           "POST",
+                        // 请求URL
+                        url:            "{:U('delete')}",
+                        // 提交数据
+                        data:           { id: $id.val() },
+                        // 响应数据类型
+                        dataType:       "json",
+                        // 回调函数[提交前]
+                        beforeSend:     function() {
+                            // 显示Loading
+                            showLoading("提交中...")
+                        },
+                        // 回调函数[错误]
+                        error:          function(result) {
+                            $.Prompt("有异常哟！赶紧联系程序猿~", "fail");
+                        },
+                        // 回调函数[成功]
+                        success:        function(result) {
+                            if (result.status == '0') {
+                                // ###失败
+                                $.Prompt(result.message);
+                            } else {
+                                // ###成功
+                                $.Prompt(result.message, 'succ');
+                                if (typeof(result.redirect) !== 'undefined' && result.redirect !== '') {
+                                    window.location.href = result.redirect;
+                                }
+                            }
+                        }
+                    })
+                }
+            })
+        })
+    </script>
+</block>

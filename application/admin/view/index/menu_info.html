@@ -1,0 +1,133 @@
+
+<link href="/static/admin/themes/flat/theme.min.css" rel="stylesheet">
+<link href="/static/admin/css/simplebootadmin.css" rel="stylesheet">
+<link href="/static/admin/font-awesome/4.4.0/css/font-awesome.min.css"  rel="stylesheet" type="text/css">
+<script type="text/javascript">
+	//全局变量
+	var GV = {
+		DIMAUB: "/",
+		JS_ROOT: "static/admin/js/",
+		TOKEN: ""
+	};
+</script>
+<body>
+<div class="wrap">
+	<ul class="nav nav-tabs">
+		<li><a href="/admin/index/menu">菜单</a></li>
+		<li><a href="/admin/index/add_menu">添加菜单</a></li>
+	</ul>
+	<form method="post" class="form-horizontal" action="menu_info">
+		<input type="hidden" name="id" value="{$rule.id}">
+		{if condition="$rule.parentid neq 0"}
+			<div class="control-group">
+				<label class="control-label">菜单:</label>
+				<div class="controls">
+
+					<select name="parentid">
+						{foreach name="parent" item="vo"}
+						{if condition="$rule.parentid eq $vo.id"}
+						<option value="{$vo.id}" selected="selected">{$vo.name}</option>
+						{else/}
+						<option value="{$vo.id}">{$vo.name}</option>
+						{/if}
+						{/foreach}
+					</select>
+
+				</div>
+			</div>
+		{/if}
+			<div class="control-group">
+				<label class="control-label">名称:</label>
+				<div class="controls">
+					<input type="text" name="name" value="{$rule.name}">
+					<span class="form-required">*</span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">应用:</label>
+				<div class="controls">
+					<input type="text" name="module" value="{php} $arr = explode('/', $rule['rule_name']);echo $arr[1];{/php}">
+					<span class="form-required">*</span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">控制器:</label>
+				<div class="controls">
+					<input type="text" name="controller" value="{php} $arr = explode('/', $rule['rule_name']);echo $arr[2];{/php}">
+					<span class="form-required">*</span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">方法:</label>
+				<div class="controls">
+					<input type="text" name="action" value="{php} $arr = explode('/', $rule['rule_name']);echo $arr[3];{/php}">
+					<span class="form-required">*</span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">图标:</label>
+				<div class="controls">
+					<input type="text" name="icon" value="{$rule.icon}">
+					<a href="http://www.thinkcmf.com/font/icons" target="_blank">选择图标</a> 不带前缀fa-，如fa-user => user
+				</div>
+			</div>
+		{if condition="$rule.parentid neq 0"}
+			<div class="control-group">
+				<label class="control-label">状态:</label>
+				<div class="controls">
+
+					<select name="show">
+					{if condition="$rule.show eq 1"}
+					<option value="1" selected="selected">显示</option>
+					<option value="0">隐藏</option>
+					{else/}
+					<option value="1">显示</option>
+					<option value="0" selected="selected">隐藏</option>
+					{/if}
+				</select><br/><br/>
+
+				</div>
+			</div>
+		{/if}
+		</fieldset>
+		<div class="form-actions">
+			<button class="btn btn-primary" type="submit">提交</button>
+		</div>
+	</form>
+</div>
+<script src="/static/admin/js/jquery.js"></script>
+<script src="/static/admin/js/wind.js"></script>
+<script src="/static/admin/js/common.js"></script>
+
+<script src="/static/admin/bootstrap/js/bootstrap.min.js"></script>
+<script>
+	$(function() {
+		$(".js-ajax-close-btn").on('click', function(e) {
+			e.preventDefault();
+			Wind.use("artDialog", function() {
+				art.dialog({
+					id : "question",
+					icon : "question",
+					fixed : true,
+					lock : true,
+					background : "#CCCCCC",
+					opacity : 0,
+					content : "您确定需要关闭当前页面嘛？",
+					ok : function() {
+						setCookie('refersh_time_admin_menu_index', 1);
+						window.close();
+						return true;
+					}
+				});
+			});
+		});
+	});
+</script>
+</body>
+</html>
+
+
+
+
+
+

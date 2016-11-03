@@ -8,7 +8,7 @@ namespace app\admin\controller;
 class Rbac extends Common {
 
     // 表名
-    protected $table            = 'bbcmf_admin';
+    protected $table            = 'admin';
     // 添加 页面
     protected $view_add         = 'add_admin';
     // 主页 页面
@@ -27,23 +27,23 @@ class Rbac extends Common {
     // 添加 assign
     // ----------------------------------
     public function addAssign(){
-        $this->assign("role", $this->all('bbcmf_role'));
-        $this->assign("group", $this->treeStyleData("bbcmf_group", "<option value='\$id' \$selected>\$spacer \$group</option>"));
+        $this->assign("role", $this->all('role'));
+        $this->assign("group", $this->treeStyleData("group", "<option value='\$id' \$selected>\$spacer \$group</option>"));
     }
 
     // ----------------------------------
     // 角色 下拉数据
     // ----------------------------------
     public function role(){
-        return json_encode(['data' => $this->all('bbcmf_role')]);
+        return json_encode(['data' => $this->all('role')]);
     }
 
     // ----------------------------------
     // 编辑 assign
     // ----------------------------------
     public function editAssign(){
-        $this->assign("role", $this->all('bbcmf_role'));
-        $this->assign("group", $this->treeStyleData("bbcmf_group", "<option value='\$id' \$selected>\$spacer \$group</option>"));
+        $this->assign("role", $this->all('role'));
+        $this->assign("group", $this->treeStyleData("group", "<option value='\$id' \$selected>\$spacer \$group</option>"));
     }
 
 
@@ -74,12 +74,12 @@ class Rbac extends Common {
     // 用户信息
     // ----------------------------------
     public function userData(){
-        $userinfos = $this->all('bbcmf_admin');
+        $userinfos = $this->all('admin');
 
         $ret_data_arr = [];
         foreach ($userinfos as $key => $userinfo) {
-            $role_info      = $this->one('bbcmf_role',  ['id' => $userinfo['role_id']]);
-            $grouup_info    = $this->one('bbcmf_group', ['id' => $userinfo['group_id']]);
+            $role_info      = $this->one('role',  ['id' => $userinfo['role_id']]);
+            $grouup_info    = $this->one('group', ['id' => $userinfo['group_id']]);
 
             $tmp_arr['id']          = $userinfo['id'];
             $tmp_arr['username']    = $userinfo['username'];
